@@ -188,6 +188,21 @@ button{font-family:inherit}
   .sheetClose{display:block;position:sticky;top:0;margin-left:auto;font:500 14px var(--body);background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:999px;width:32px;height:32px;cursor:pointer}
 }
 
+.instant,.instant *{transition:none!important;animation-duration:0s!important;animation-delay:0s!important}
+
+.sideNav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:44px;height:64px;border:0;border-radius:12px;background:transparent;color:var(--fg);opacity:.35;font:300 44px/1 var(--body);cursor:pointer;transition:opacity .2s,background .2s}
+.sideNav:hover,.sideNav:focus-visible{opacity:.9;background:color-mix(in srgb,var(--surface) 70%,transparent)}
+.sideNav:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sideNav.prev{left:max(8px,env(safe-area-inset-left,0px))}
+.sideNav.next{right:max(8px,env(safe-area-inset-right,0px))}
+.dots{display:flex;justify-content:center;gap:7px;padding-top:10px}
+.dot{position:relative;overflow:hidden;width:8px;height:8px;padding:0;border:0;border-radius:999px;background:var(--line);cursor:pointer;transition:width .3s ease}
+.dot .fill{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--fg);border-radius:999px}
+.dot.done .fill{width:100%;background:var(--muted)}
+.dot.on{width:28px}
+.dot:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+@media (max-width:640px){.sideNav{width:34px;font-size:36px;opacity:.28}}
+
 /* ---------- page ---------- */
 .wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px;display:flex;flex-direction:column;gap:44px}
 .eyebrow{font:400 13px var(--mono);color:var(--muted);letter-spacing:.02em;display:flex;flex-wrap:wrap;gap:6px 14px}
@@ -406,7 +421,8 @@ footer p{margin:0;color:var(--muted);font-size:15px}
     </svg>
   </div>
   <div class="cap" id="cap" aria-live="polite"></div>
-  <div class="prog"><i id="progBar"></i></div>
+  <button type="button" class="sideNav prev" id="prevS" aria-label="Previous scene">‹</button><button type="button" class="sideNav next" id="nextS" aria-label="Next scene">›</button>
+  <div class="dots" id="dots" role="group" aria-label="Scenes"></div><i id="progBar" hidden></i>
 </div>
 
 <!-- ======== PAGE ======== -->
@@ -715,10 +731,11 @@ const edgeData=[];nodeData.forEach((d,i)=>{if(d.t==="role")edgeData.push([i,i===
 const edgeEls2=edgeData.map(([a,b])=>{const l=mk("line",{x1:nodeData[a].x,y1:nodeData[a].y,x2:nodeData[b].x,y2:nodeData[b].y,pathLength:1,class:"edge2"});nodesG.insertBefore(l,nodesG.firstChild);return l});
 
 let timers=[],raf,t0,counters=[];
-const later=(f,ms)=>timers.push(setTimeout(f,ms));
+let instant=false,cur=0;
+const later=(f,ms)=>{if(instant)f();else timers.push(setTimeout(f,ms))};
 const on=(...ids)=>ids.forEach(i=>$(i).classList.add("on"));
 const off=(...ids)=>ids.forEach(i=>$(i).classList.remove("on"));
-function setCap(html){cap.classList.add("fade");later(()=>{cap.innerHTML=html;cap.classList.remove("fade")},200)}
+function setCap(html){if(instant)return;cap.classList.add("fade");later(()=>{cap.innerHTML=html;cap.classList.remove("fade")},200)}
 function countUp(id,to,ms,suffix){const st=performance.now();const f=()=>{const el=$(id);if(!el)return;const p=Math.min(1,(performance.now()-st)/ms);el.textContent=Math.round(to*(1-Math.pow(1-p,3)))+(p===1?suffix||"":"");if(p<1)counters.push(requestAnimationFrame(f))};f()}
 function look(cx,cy,z){cam.style.transform=z===1?"none":`translate(${cx}px,${cy}px) scale(${z}) translate(${-cx}px,${-cy}px)`}
 function drop(id){const el=$(id);el.classList.remove("gone","fast","land","float");void el.getBoundingClientRect();el.classList.add("land")}
@@ -757,19 +774,39 @@ function reset(){
   [carMove,avatarMove,cam].forEach(el=>el.style.transition="");PARTS.forEach(id=>$(id).style.transition="");
   stage.classList.remove("moving","build","walk","point","tune","atwall","wave");cap.innerHTML="";bar.style.width="0";
 }
-function tick(){const p=Math.min(1,(performance.now()-t0)/TOTAL);bar.style.width=p*100+"%";if(p<1)raf=requestAnimationFrame(tick)}
-function play(){
+let sceneStart=0;
+function tick(){const now=performance.now(),p=Math.min(1,(now-t0)/TOTAL);bar.style.width=p*100+"%";
+  const d=dotsEl.children[cur];if(d){const f=Math.min(1,(now-sceneStart)/SCENES[cur].ms);d.firstChild.style.width=f*100+"%"}
+  if(p<1)raf=requestAnimationFrame(tick)}
+/* play from any scene: earlier scenes are applied instantly, then the timeline runs on from there */
+function runFrom(i){
   reset();intro.hidden=false;intro.classList.remove("out");document.body.style.overflow="hidden";
-  let at=0;SCENES.forEach(sc=>{later(()=>{if(sc.cap)setCap(sc.cap);sc.go()},at);at+=sc.ms});
-  later(finish,TOTAL);t0=performance.now();tick();$("skip").focus();
+  if(i>0){instant=true;stage.classList.add("instant");for(let k=0;k<i;k++)SCENES[k].go();instant=false;
+    void stage.getBoundingClientRect();requestAnimationFrame(()=>requestAnimationFrame(()=>stage.classList.remove("instant")))}
+  cur=i;setDots(i);sceneStart=performance.now();
+  if(i>0&&SCENES[i].cap){cap.classList.remove("fade");cap.innerHTML=SCENES[i].cap}
+  let at=0;
+  for(let k=i;k<SCENES.length;k++){const sc=SCENES[k],idx=k;later(()=>{cur=idx;sceneStart=performance.now();setDots(idx);if(sc.cap&&!(idx===i&&i>0))setCap(sc.cap);else if(!sc.cap&&idx>0)cap.classList.add("fade");sc.go()},at);at+=sc.ms}
+  later(finish,at);t0=performance.now()-SCENES.slice(0,i).reduce((a,x)=>a+x.ms,0);tick();
 }
+const dotsEl=$("dots");
+SCENES.forEach((_,k)=>{const d=document.createElement("button");d.type="button";d.className="dot";d.append(document.createElement("span"));d.firstChild.className="fill";d.setAttribute("aria-label",`Scene ${k+1} of ${SCENES.length}`);d.onclick=()=>runFrom(k);dotsEl.append(d)});
+function setDots(k){[...dotsEl.children].forEach((d,j)=>{d.firstChild.style.width="";d.classList.toggle("on",j===k);d.classList.toggle("done",j<k);if(j===k)d.setAttribute("aria-current","step");else d.removeAttribute("aria-current")})}
+function play(){runFrom(0);$("skip").focus()}
+function nextScene(){if(intro.hidden)return;cur+1<SCENES.length?runFrom(cur+1):finish()}
+function prevScene(){if(intro.hidden)return;runFrom(Math.max(0,cur-1))}
 function finish(){
   timers.forEach(clearTimeout);timers=[];cancelAnimationFrame(raf);
   intro.classList.add("out");document.body.style.overflow="";
   setTimeout(()=>{intro.hidden=true;$("top").focus({preventScroll:true})},600);
 }
 $("skip").onclick=finish;$("replay").onclick=play;
-intro.addEventListener("keydown",e=>{if(e.key==="Escape")finish()});
+intro.addEventListener("keydown",e=>{if(e.key==="Escape")finish();else if(e.key==="ArrowRight"){e.preventDefault();nextScene()}else if(e.key==="ArrowLeft"){e.preventDefault();prevScene()}});
+$("nextS").onclick=nextScene;$("prevS").onclick=prevScene;
+let tx=null,ty=null;
+intro.addEventListener("touchstart",e=>{const t=e.changedTouches[0];tx=t.clientX;ty=t.clientY},{passive:true});
+intro.addEventListener("touchend",e=>{if(tx===null)return;const t=e.changedTouches[0],dx=t.clientX-tx,dy=t.clientY-ty;tx=null;
+  if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)*1.3){dx<0?nextScene():prevScene()}},{passive:true});
 if(!matchMedia("(prefers-reduced-motion: reduce)").matches)play();
 
 /* stories: on wide screens, a story opens in one full-width panel under the cards */
