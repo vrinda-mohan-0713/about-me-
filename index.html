@@ -1,0 +1,761 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>[hidden]{display:none!important}html,body{margin:0}body{font-size:14px}img{max-width:100%}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+<title>Vrinda, as a Graph</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Vrinda Mohan: product leader for data platforms at Vanguard. Engineer, data scientist, product manager, startup co-founder. Open to Director and Head of Data Product roles in New York.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Vrinda Mohan","sameAs":["https://www.linkedin.com/in/vrinda-mohan-0713"],"jobTitle":"Technical Product Manager, Data Platform","worksFor":{"@type":"Organization","name":"Vanguard"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Rutgers University"},"address":{"@type":"PostalAddress","addressRegion":"NY"},"description":"Product leader for enterprise data platforms. Seeking Director or Head of Data Product / Data Platform roles in New York.","knowsLanguage":["English","Malayalam","Hindi"],"hasCredential":["AWS Solutions Architect – Associate","IBM Applied AI Professional Certificate","Machine Learning Specialization (Stanford)","Professional Scrum Product Owner II","McKinsey Academy Management Accelerator"],"knowsAbout":["Product strategy","Data platform product management","Semantic layer design","Data catalog and lineage","AI-ready data foundations","Data governance","Data modeling","dbt","Databricks","Dremio","AWS","Python","SQL","Tableau","Machine learning","Cross-functional leadership","Stakeholder management","Executive communication","Agile product ownership","Financial services data"]}
+</script>
+<style>
+/* Layout: a 15-second F1 intro over the page, then thesis + traits + metrics, then a career-track knowledge graph with a detail panel */
+:root{
+  --bg:#F3F5F9; --surface:#FFFFFF; --fg:#121726; --muted:#5B6478; --line:#D5DAE5;
+  --accent:#2F4BDB; --tint:rgba(47,75,219,.10);
+  --car:#1F4FD1; --car-deep:#0B1E5B; --hair:#15161A; --red:#E5322D;
+  --t-person:#121726; --t-role:#121726; --t-decision:#2F4BDB; --t-outcome:#B86A00; --t-skill:#0B8274; --t-cert:#6B7A00; --t-lead:#8B3BA3;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"IBM Plex Sans",ui-sans-serif,system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1220; --surface:#161B2C; --fg:#E8EBF4; --muted:#98A1B7; --line:#2A3148;
+  --accent:#7D93FF; --tint:rgba(125,147,255,.14); --car:#3E6BEA; --car-deep:#0A1440; --hair:#05060A;
+  --t-person:#E8EBF4; --t-role:#E8EBF4; --t-decision:#7D93FF; --t-outcome:#F0A63A; --t-skill:#3CC7B5; --t-cert:#B8C64A; --t-lead:#C987E0; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1220; --surface:#161B2C; --fg:#E8EBF4; --muted:#98A1B7; --line:#2A3148;
+  --accent:#7D93FF; --tint:rgba(125,147,255,.14); --car:#3E6BEA; --car-deep:#0A1440; --hair:#05060A;
+  --t-person:#E8EBF4; --t-role:#E8EBF4; --t-decision:#7D93FF; --t-outcome:#F0A63A; --t-skill:#3CC7B5; --t-cert:#B8C64A; --t-lead:#C987E0; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.55}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---------- intro ---------- */
+#intro{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;
+  padding-top:calc(env(safe-area-inset-top,0px) + 16px);padding-bottom:calc(env(safe-area-inset-bottom,0px) + 16px);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));transition:opacity .6s ease}
+#intro.out{opacity:0;pointer-events:none}
+.ibar{display:flex;justify-content:space-between;align-items:center;gap:12px;font:400 13px var(--mono);color:var(--muted)}
+.skip{font:500 14px var(--body);padding:8px 14px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.stage svg{width:100%;max-width:1100px;max-height:100%;height:auto;overflow:visible}
+.cap{min-height:2.6em;max-width:900px;margin:0 auto;text-align:center;font:800 clamp(24px,4vw,46px)/1.12 var(--display);letter-spacing:-.015em;text-wrap:balance;transition:opacity .2s ease,transform .25s ease}
+.cap.fade{opacity:0;transform:translateY(6px)}
+.cap .lap{font:600 .42em var(--mono);color:var(--accent);letter-spacing:.08em;display:block;margin-bottom:6px}
+.cap em{font-style:normal;color:var(--accent)}
+.cap .pop{display:inline-block;color:var(--red);animation:pop .5s cubic-bezier(.2,1.6,.4,1) 1.5s both}
+@keyframes pop{0%{transform:scale(.9)}60%{transform:scale(1.35) rotate(-3deg)}100%{transform:scale(1.15) rotate(-2deg)}}
+.prog{height:3px;background:var(--line);border-radius:2px;margin-top:14px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--fg)}
+
+.ia{opacity:0;transform:scale(.5);transition:opacity .35s ease,transform .45s cubic-bezier(.2,1.4,.4,1);transform-box:fill-box;transform-origin:center}
+.ia.on{opacity:1;transform:none}
+.fadein{opacity:0;transition:opacity .5s ease}
+.fadein.on{opacity:1}
+.lt{fill:#2A2E3A;transition:fill .08s}
+.lt.red{fill:var(--red)}
+#carMove{transition:transform 1s cubic-bezier(.25,.9,.3,1)}
+#carMove.exit{transition:transform .9s cubic-bezier(.6,0,.9,.4)}
+.spin,.hair{transform-box:fill-box}
+.spin{transform-origin:center}
+.hair{transform-origin:100% 20%}
+.speedl{opacity:0;transition:opacity .3s}
+.race .speedl{opacity:1}
+.race .spin{animation:spin .3s linear infinite}
+.race .hair{animation:hair .38s ease-in-out infinite alternate}
+.race .lane{animation:lane .22s linear infinite}
+.race .kerb{animation:kerb .22s linear infinite}
+.race .bob{animation:bob .3s ease-in-out infinite alternate}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes hair{from{transform:skewY(0) rotate(0)}to{transform:skewY(-5deg) rotate(4deg)}}
+@keyframes lane{to{stroke-dashoffset:-104}}
+@keyframes kerb{to{transform:translateX(-40px)}}
+@keyframes bob{to{transform:translateY(-2px)}}
+#flagCloth{transform-box:fill-box;transform-origin:0 50%}
+#flag.on #flagCloth{animation:wave .45s ease-in-out infinite alternate}
+@keyframes wave{to{transform:skewY(6deg) scaleX(.94)}}
+#world{transition:opacity .5s ease}
+.done #world{opacity:.12}
+.lapdot{fill:none;stroke:var(--muted);stroke-width:2;transition:fill .3s}
+.lapdot.on{fill:var(--accent);stroke:var(--accent)}
+.cap .sub{display:block;margin-top:10px;font:600 .4em var(--mono);color:var(--muted);letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.cap .sub b{color:var(--fg);font-weight:600}
+
+.drop{opacity:0;transform:translateY(-80px);transition:opacity .3s ease,transform .7s cubic-bezier(.3,1.5,.5,1);transform-box:fill-box}
+.drop.on{opacity:1;transform:none}
+#avatarMove{transition:transform 1.4s cubic-bezier(.5,0,.3,1)}
+#carOut{transition:transform 1.4s cubic-bezier(.6,0,.9,.5)}
+.crew{opacity:0;transform:translateX(-700px);transition:opacity .2s ease,transform .9s cubic-bezier(.3,1.25,.5,1)}
+.crew.on{opacity:1;transform:none}
+.build #wrench{transform-box:fill-box;transform-origin:50% 100%;animation:wrench .3s ease-in-out infinite alternate}
+@keyframes wrench{to{transform:rotate(-35deg)}}
+.build #sparks{opacity:1;animation:spark .3s steps(2) infinite}
+@keyframes spark{50%{opacity:.2}}
+.tune #wingBlade{transform-box:fill-box;transform-origin:center;animation:tune .5s ease-in-out 3 alternate}
+@keyframes tune{to{transform:rotate(-10deg)}}
+.tune #radio{opacity:1;animation:spark .6s steps(2) infinite}
+.roll .spin{animation:spin .3s linear infinite}
+.lnk{fill:none;stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1.6s ease}
+.lnk.on{stroke-dashoffset:0}
+
+.part{transition:transform .75s cubic-bezier(.3,1.45,.5,1),opacity .3s ease;transform-box:fill-box;transform-origin:center}
+.part.gone{opacity:0;transform:translate(var(--sx,0px),var(--sy,-170px)) rotate(var(--sr,0deg))}
+.part.float{opacity:1;transform:translate(var(--sx),var(--sy)) rotate(var(--sr))}
+.part.float .sq{animation:bob 2.6s ease-in-out infinite alternate}
+@keyframes bob{to{transform:translateY(-12px) rotate(2deg)}}
+.wave #armR{animation:waveA .35s ease-in-out 7 alternate}
+@keyframes waveA{from{transform:rotate(-115deg)}to{transform:rotate(-150deg)}}
+.wave #wrench{opacity:0}
+.part.fast{transition:transform .65s cubic-bezier(.5,0,.85,.35),opacity .55s ease}
+.sq{transform-box:fill-box;transform-origin:50% 100%}
+.part.land .sq{animation:squash .5s ease-out}
+@keyframes squash{0%{transform:scale(1.1,.82)}45%{transform:scale(.95,1.07)}100%{transform:none}}
+#carMove{transition:transform .8s cubic-bezier(.12,.85,.25,1)}
+#speed{opacity:0;transition:opacity .25s}
+.moving #speed{opacity:1}
+.moving .spin{animation:spin .14s linear infinite}
+#cam{transition:transform 1s cubic-bezier(.5,0,.25,1)}
+#avatar{opacity:0;transform:scale(.2);transform-box:fill-box;transform-origin:50% 100%;transition:opacity .2s,transform .7s cubic-bezier(.3,1.7,.5,1)}
+#avatar.on{opacity:1;transform:none}
+#avatar.bye{opacity:0;transform:scale(.6);transition:opacity .4s,transform .4s}
+#idle{animation:breathe 2.4s ease-in-out infinite}
+@keyframes breathe{50%{transform:translateY(-2px)}}
+#eyes{transform-box:fill-box;transform-origin:center;animation:blink 3.6s infinite}
+@keyframes blink{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.1)}}
+#legL,#legR{transform-box:fill-box;transform-origin:50% 0}
+.walk #legL{animation:stepA .28s ease-in-out infinite alternate}
+.walk #legR{animation:stepA .28s ease-in-out infinite alternate-reverse}
+@keyframes stepA{from{transform:rotate(20deg)}to{transform:rotate(-20deg)}}
+.walk #idle{animation:hop .28s ease-in-out infinite alternate}
+@keyframes hop{to{transform:translateY(-5px)}}
+#armR{transform-box:fill-box;transform-origin:0 0;transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
+.build #armR{animation:hammer .28s ease-in-out infinite alternate}
+@keyframes hammer{to{transform:rotate(-34deg)}}
+.point #armR{transform:rotate(-115deg)}
+.point #wrench,.walk #wrench,.atwall #wrench{opacity:0}
+#avatarMove{transition:transform 1.5s cubic-bezier(.45,0,.3,1)}
+.flash{animation:flash .55s ease-out}
+@keyframes flash{0%{opacity:.8}100%{opacity:0}}
+.tune #drs{transform-box:fill-box;transform-origin:0 50%;animation:drs .35s ease-in-out 4 alternate}
+@keyframes drs{to{transform:rotate(-14deg)}}
+.node2{transition:transform 1.25s cubic-bezier(.65,0,.2,1),opacity .35s ease}
+.edge2{stroke:var(--accent);stroke-width:1.6;opacity:.55;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset .9s ease}
+.edge2.on{stroke-dashoffset:0}
+.dimmed{opacity:0;transition:opacity .5s ease}
+
+.storyGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.cs .csRes{margin-top:auto}
+.cs{display:flex;flex-direction:column;gap:10px}
+.cs h3{font:700 clamp(19px,2vw,23px)/1.2 var(--display);margin:0;letter-spacing:-.01em;text-wrap:balance}
+.cs .csTag{align-self:flex-start}
+.csHook{margin:0;font-size:16px}
+.csRes{margin:0;font-size:14.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.csRes span{display:block;font:500 11.5px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--t-outcome);margin-bottom:2px}
+.cs details summary{cursor:pointer;font:500 13.5px var(--mono);color:var(--accent);list-style:none}
+.cs details summary::-webkit-details-marker{display:none}
+.cs details summary::after{content:" ↓"}
+.cs details[open] summary::after{content:" ↑"}
+.cs.active summary::after{content:" ↑"}
+.cs details dl{grid-template-columns:minmax(0,1fr);gap:2px;margin-top:12px}
+.cs details dd{margin-bottom:10px;font-size:15px}
+@media (max-width:900px){.storyGrid{grid-template-columns:minmax(0,1fr)}}
+
+.storyPanel{background:var(--surface);border:1px solid var(--accent);border-radius:12px;padding-block:24px;padding-inline:24px;scroll-margin-top:16px}
+.storyPanel .spHead{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px}
+.storyPanel h3{font:700 24px/1.2 var(--display);margin:0}
+.storyPanel button{font:500 13px var(--mono);color:var(--muted);background:none;border:1px solid var(--line);border-radius:6px;padding:6px 10px;cursor:pointer}
+.storyPanel dl{display:grid;grid-template-columns:170px minmax(0,1fr);gap:12px 24px;margin:0}
+.storyPanel dt{font:500 12.5px var(--mono);color:var(--muted);padding-top:3px}
+.storyPanel dd{margin:0;font-size:15.5px;max-width:78ch}
+.storyPanel dt:last-of-type,.storyPanel dd:last-of-type{color:var(--fg);font-weight:600}
+.cs.active{border-color:var(--accent)}
+
+/* ---------- page ---------- */
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px;display:flex;flex-direction:column;gap:44px}
+.eyebrow{font:400 13px var(--mono);color:var(--muted);letter-spacing:.02em;display:flex;flex-wrap:wrap;gap:6px 14px}
+.eyebrow b{color:var(--accent);font-weight:500}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,6.2vw,70px);line-height:1.02;letter-spacing:-.02em;margin:14px 0 18px;text-wrap:balance;max-width:17ch}
+h1 em{font-style:normal;color:var(--accent)}
+.lede{max-width:64ch;color:var(--muted);font-size:18px;margin:0}
+.traits{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:28px}
+.trait{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+.trait h3{font:700 20px var(--display);margin:0 0 4px}
+.trait p{margin:0;font-size:14.5px;color:var(--muted)}
+.now{margin-top:32px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding-block:24px;padding-inline:24px;display:flex;flex-direction:column;gap:6px}
+.nowTag{font:500 12px var(--mono);color:var(--accent);letter-spacing:.06em;text-transform:uppercase}
+.nowH{font-size:clamp(24px,3vw,32px)}
+.nowP{margin:4px 0 0;max-width:68ch;font-size:16.5px}
+.nowL{margin:16px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--muted);max-width:80ch}
+.nowL b{color:var(--fg);font-weight:600}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.stat{border-top:2px solid var(--fg);padding-top:10px}
+.stat .n{font-family:var(--display);font-weight:700;font-size:clamp(28px,4vw,42px);line-height:1;font-variant-numeric:tabular-nums}
+.stat .l{font-size:14px;color:var(--muted);margin-top:6px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{font:500 15px var(--body);padding:10px 16px;border-radius:6px;border:1px solid var(--line);color:var(--fg);text-decoration:none;background:var(--surface);cursor:pointer}
+.btn.primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+
+.stories{display:flex;flex-direction:column;gap:16px}
+.cs{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding-block:24px;padding-inline:24px;scroll-margin-top:16px}
+.csHead{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 14px;margin-bottom:14px}
+.csHead h3{font:700 clamp(20px,2.4vw,26px)/1.2 var(--display);margin:0;letter-spacing:-.01em}
+.csTag{font:500 12px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.cs dl{display:grid;grid-template-columns:170px minmax(0,1fr);gap:10px 20px;margin:0}
+.cs dt{font:500 12.5px var(--mono);color:var(--muted);padding-top:3px}
+.cs dd{margin:0;font-size:15.5px;max-width:72ch}
+.cs dt:last-of-type,.cs dd:last-of-type{color:var(--fg);font-weight:600}
+.csLink{display:inline-block;margin-top:4px;font:500 13px var(--mono);color:var(--accent)}
+@media (max-width:640px){.cs dl{grid-template-columns:minmax(0,1fr);gap:2px}.cs dd{margin-bottom:10px}}
+.gh{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px}
+h2{font-family:var(--display);font-weight:700;font-size:28px;margin:0;letter-spacing:-.01em}
+.gh p{margin:4px 0 0;color:var(--muted);font-size:15px;max-width:60ch}
+.tog{display:flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.tog button{font:500 14px var(--body);padding:8px 14px;border:0;background:var(--surface);color:var(--muted);cursor:pointer}
+.tog button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:400 13px var(--mono);padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.chip[aria-pressed="false"]{opacity:.45}
+
+.board{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:16px;align-items:start}
+.canvas{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+#svg{display:block;width:100%;height:auto}
+.track{stroke:var(--line);stroke-width:10;stroke-linecap:round}
+.trackDash{stroke:var(--surface);stroke-width:2;stroke-dasharray:14 12}
+.edge{stroke:var(--line);stroke-width:1.2}
+.edge.hot{stroke:var(--fg);stroke-width:1.8}
+.edge.dim{opacity:.3}
+.elabel{font:400 10px var(--mono);fill:var(--muted);opacity:0;paint-order:stroke;stroke:var(--surface);stroke-width:3px}
+.elabel.hot{opacity:1}
+.node{cursor:pointer;outline:none}
+.node circle{stroke:var(--surface);stroke-width:2.5}
+.node text{font:500 12px var(--body);fill:var(--fg);paint-order:stroke;stroke:var(--surface);stroke-width:4px;stroke-linejoin:round}
+.node.role text{font:700 13px var(--display)}
+.node.role .yr{font:400 10.5px var(--mono);fill:var(--muted)}
+.node.person text{font:800 16px var(--display)}
+.node.quiet text{opacity:0;transition:opacity .2s}
+.node.quiet.near text,.node.quiet:hover text,.node.quiet:focus-visible text{opacity:1}
+.node.dim{opacity:.22}
+.node.sel circle{stroke:var(--fg);stroke-width:3}
+.node:focus-visible circle{stroke:var(--accent);stroke-width:3}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:20px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px)}
+.ptype{font:500 12px var(--mono);letter-spacing:.04em}
+[data-t="person"] .ptype{color:var(--t-person)} [data-t="role"] .ptype{color:var(--muted)} [data-t="decision"] .ptype{color:var(--t-decision)}
+[data-t="outcome"] .ptype{color:var(--t-outcome)} [data-t="skill"] .ptype{color:var(--t-skill)} [data-t="cert"] .ptype{color:var(--t-cert)} [data-t="lead"] .ptype{color:var(--t-lead)}
+.panel h3{font-family:var(--display);font-size:24px;line-height:1.15;margin:6px 0 10px;text-wrap:balance}
+.panel p{margin:0 0 14px;font-size:15px}
+.rel{list-style:none;margin:0;padding:12px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:6px;max-height:260px;overflow:auto}
+.rel button{all:unset;cursor:pointer;font:400 12.5px var(--mono);color:var(--muted);line-height:1.4}
+.rel button span{color:var(--fg)}
+.rel button:hover span{color:var(--accent)}
+.rel button:focus-visible{outline:2px solid var(--accent)}
+.hint{font:400 12px var(--mono);color:var(--muted);margin-top:12px}
+
+.list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+.li h3{font:600 16px var(--body);margin:4px 0 6px}
+.li p{margin:0;font-size:14px;color:var(--muted)}
+
+footer{display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:18px}
+footer h2{font-size:22px}
+footer p{margin:0;color:var(--muted);font-size:15px}
+
+@media (max-width:900px){.board{grid-template-columns:minmax(0,1fr)}.panel{position:static}}
+@media (max-width:640px){.traits,.stats{grid-template-columns:minmax(0,1fr)}.lede{font-size:16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+
+<!-- ======== INTRO: a 25-second pitch ======== -->
+<div id="intro" role="dialog" aria-label="45-second introduction" hidden>
+  <div class="ibar"><span>Vrinda · the build</span><button class="skip" id="skip">Skip intro →</button></div>
+  <div class="stage" id="stage">
+    <svg viewBox="0 0 1000 520" aria-hidden="true">
+      <defs>
+        <linearGradient id="gBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6B92FF"/><stop offset=".5" stop-color="#2452E0"/><stop offset="1" stop-color="#132F8F"/></linearGradient>
+        <linearGradient id="gWhite" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#CFD9F0"/></linearGradient>
+        <linearGradient id="gDark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2A3658"/><stop offset="1" stop-color="#0A1230"/></linearGradient>
+        <radialGradient id="gTyre" cx=".45" cy=".4" r=".6"><stop offset=".5" stop-color="#34363E"/><stop offset="1" stop-color="#0B0C0F"/></radialGradient>
+        <radialGradient id="gSpot" cx=".5" cy=".55" r=".5"><stop offset="0" style="stop-color:var(--accent);stop-opacity:.22"/><stop offset="1" style="stop-color:var(--accent);stop-opacity:0"/></radialGradient>
+        <linearGradient id="gSuit" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5A85FF"/><stop offset="1" stop-color="#1D45C4"/></linearGradient>
+        <linearGradient id="gHair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B3A46"/><stop offset="1" stop-color="#0A0A0F"/></linearGradient>
+        <radialGradient id="gSkin" cx=".42" cy=".38" r=".7"><stop offset="0" stop-color="#A9714F"/><stop offset="1" stop-color="#7E4F33"/></radialGradient>
+        <linearGradient id="gMon" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14224F"/><stop offset="1" stop-color="#070C22"/></linearGradient>
+        <filter id="fBlur" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="6"/></filter>
+        <filter id="fGlow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <g id="cam"><g id="world">
+        <ellipse cx="480" cy="330" rx="470" ry="250" fill="url(#gSpot)"/>
+        <g id="grid" class="fadein" stroke="var(--line)" stroke-width="1">
+          <line x1="0" y1="140" x2="1000" y2="140"/><line x1="0" y1="220" x2="1000" y2="220"/><line x1="0" y1="300" x2="1000" y2="300"/><line x1="0" y1="380" x2="1000" y2="380"/>
+          <line x1="120" y1="70" x2="120" y2="440"/><line x1="280" y1="70" x2="280" y2="440"/><line x1="440" y1="70" x2="440" y2="440"/><line x1="600" y1="70" x2="600" y2="440"/><line x1="760" y1="70" x2="760" y2="440"/><line x1="920" y1="70" x2="920" y2="440"/>
+        </g>
+        <rect x="-200" y="440" width="1400" height="80" fill="var(--surface)"/>
+        <line x1="-200" y1="440" x2="1200" y2="440" stroke="var(--line)" stroke-width="2"/>
+
+        <g id="pitwall" class="fadein">
+          <ellipse cx="925" cy="442" rx="80" ry="6" fill="#000" opacity=".25" filter="url(#fBlur)"/>
+          <rect x="860" y="300" width="130" height="140" rx="10" fill="var(--surface)" stroke="var(--line)" stroke-width="2"/>
+          <rect x="871" y="312" width="108" height="68" rx="6" fill="url(#gMon)"/>
+          <polyline id="telem" class="lnk" points="878,366 892,352 904,358 918,336 932,344 946,326 960,330 972,318" style="stroke:#7FE3C9;stroke-width:2.5"/>
+          <rect x="884" y="394" width="82" height="8" rx="4" fill="var(--line)"/><rect x="884" y="410" width="54" height="8" rx="4" fill="var(--line)"/>
+        </g>
+
+        <g id="carMove">
+          <g transform="translate(250 440)">
+            <ellipse cx="230" cy="0" rx="230" ry="9" fill="#000" opacity=".35" filter="url(#fBlur)"/>
+            <g id="speed" stroke="var(--muted)" stroke-width="4" stroke-linecap="round">
+              <line x1="-170" y1="-104" x2="-40" y2="-104"/><line x1="-230" y1="-70" x2="-30" y2="-70"/><line x1="-150" y1="-36" x2="-24" y2="-36"/>
+            </g>
+            <g class="part" id="pWing"><g class="sq">
+              <path d="M28 -40 L36 -112" stroke="#0A1230" stroke-width="6"/>
+              <path d="M6 -36 L8 -124 L46 -130 L48 -40 Z" fill="url(#gDark)"/>
+              <rect x="0" y="-118" width="58" height="10" rx="5" fill="url(#gWhite)"/>
+              <rect id="drs" x="2" y="-134" width="56" height="9" rx="4.5" fill="#2452E0"/>
+            </g></g>
+            <g class="part" id="pChassis"><g class="sq">
+              <path d="M40 -15 L420 -15 L426 -8 L36 -8 Z" fill="#0A1230"/>
+              <path d="M18 -18 L64 -18 L58 -6 L24 -6 Z" fill="#0A1230"/>
+              <rect x="372" y="-27" width="72" height="5" rx="2.5" fill="url(#gWhite)"/><rect x="378" y="-20" width="68" height="5" rx="2.5" fill="#2452E0"/><rect x="384" y="-13" width="64" height="5" rx="2.5" fill="url(#gWhite)"/><rect x="442" y="-32" width="7" height="28" rx="3" fill="#0A1230"/>
+              <g><circle cx="80" cy="-35" r="35" fill="url(#gTyre)"/><circle cx="80" cy="-35" r="27" fill="none" stroke="#F4C430" stroke-width="2"/><circle cx="80" cy="-35" r="19" fill="url(#gWhite)"/>
+                <g class="spin"><circle cx="80" cy="-35" r="19" fill="none" stroke="transparent"/><path d="M80 -51 V-19 M64 -35 H96" stroke="#2452E0" stroke-width="3.5"/></g><circle cx="80" cy="-35" r="4" fill="#0A1230"/></g>
+              <g><circle cx="342" cy="-33" r="33" fill="url(#gTyre)"/><circle cx="342" cy="-33" r="25" fill="none" stroke="#F4C430" stroke-width="2"/><circle cx="342" cy="-33" r="18" fill="url(#gWhite)"/>
+                <g class="spin"><circle cx="342" cy="-33" r="18" fill="none" stroke="transparent"/><path d="M342 -48 V-18 M327 -33 H357" stroke="#2452E0" stroke-width="3.5"/></g><circle cx="342" cy="-33" r="4" fill="#0A1230"/></g>
+            </g></g>
+            <g class="part" id="pBody"><g class="sq">
+              <path d="M30 -22 L34 -50 Q86 -58 136 -84 Q166 -98 194 -92 L206 -74 L240 -74 Q266 -72 300 -56 L414 -36 Q432 -32 436 -22 Z" fill="url(#gBody)"/>
+              <path d="M62 -54 Q118 -66 160 -88" stroke="#FFFFFF" stroke-opacity=".4" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <path d="M70 -34 Q200 -46 412 -30" stroke="#FFFFFF" stroke-width="7" fill="none" stroke-linecap="round"/>
+              <circle cx="288" cy="-44" r="12" fill="#FFFFFF"/><text x="288" y="-39.5" text-anchor="middle" style="font:800 13px var(--display);fill:#2452E0">01</text>
+            </g></g>
+            <g class="part" id="pEngine"><g class="sq">
+              <path d="M118 -24 Q132 -60 188 -63 L254 -59 Q272 -42 258 -24 Z" fill="url(#gBody)" stroke="#0A1230" stroke-opacity=".35"/>
+              <path d="M140 -34 Q192 -54 252 -44" stroke="#FFFFFF" stroke-width="4" fill="none" stroke-linecap="round" opacity=".85"/>
+              <path d="M52 -52 L150 -99 L164 -95 L70 -50 Z" fill="url(#gWhite)"/>
+              <path d="M174 -94 Q188 -116 208 -96 Z" fill="#0A1230"/>
+            </g></g>
+            <g class="part" id="pSteer"><g class="sq">
+              <rect x="226" y="-92" width="18" height="12" rx="4" fill="#0A1230"/><rect x="222" y="-90" width="5" height="8" rx="2" fill="#F4C430"/><rect x="243" y="-90" width="5" height="8" rx="2" fill="#F4C430"/>
+              <path d="M198 -86 Q226 -114 264 -76" stroke="#0A1230" stroke-width="6" fill="none" stroke-linecap="round"/>
+              <path d="M248 -98 L258 -77" stroke="#0A1230" stroke-width="4"/>
+              <rect x="264" y="-82" width="15" height="6" rx="3" fill="#0A1230"/>
+            </g></g>
+            <g id="sparks" class="fadein" stroke="#F4C430" stroke-width="3" stroke-linecap="round">
+              <line x1="150" y1="-130" x2="150" y2="-146"/><line x1="164" y1="-124" x2="178" y2="-134"/><line x1="136" y1="-124" x2="122" y2="-134"/>
+            </g>
+          </g>
+        </g>
+
+        <g id="crewG"></g>
+
+        <g id="avatarMove" style="transform:translateX(160px)">
+          <g transform="translate(0 440)">
+            <g id="avatar">
+              <ellipse cx="0" cy="0" rx="30" ry="5" fill="#000" opacity=".3" filter="url(#fBlur)"/>
+              <g id="idle">
+                <path d="M-24 -132 C -42 -104 -26 -90 -38 -70 C -44 -56 -30 -48 -36 -38 L -16 -46 C -22 -64 -10 -76 -14 -98 Z" fill="url(#gHair)"/>
+                <path d="M24 -132 C 40 -106 28 -92 36 -74 C 40 -62 30 -54 33 -46 L 16 -52 C 20 -70 10 -80 14 -100 Z" fill="url(#gHair)"/>
+                <g id="legL"><rect x="-13" y="-46" width="11" height="44" rx="5" fill="#0F1E5C"/><ellipse cx="-8" cy="-2" rx="9" ry="4" fill="#FFFFFF"/></g>
+                <g id="legR"><rect x="2" y="-46" width="11" height="44" rx="5" fill="#0F1E5C"/><ellipse cx="9" cy="-2" rx="9" ry="4" fill="#FFFFFF"/></g>
+                <rect x="-21" y="-100" width="42" height="58" rx="17" fill="url(#gSuit)"/>
+                <rect x="-21" y="-80" width="42" height="7" fill="#FFFFFF"/>
+                <path d="M-8 -100 L0 -92 L8 -100" stroke="#FFFFFF" stroke-width="3" fill="none"/>
+                <line x1="-18" y1="-92" x2="-30" y2="-62" stroke="#2C5BEA" stroke-width="10" stroke-linecap="round"/>
+                <g id="armR"><line x1="18" y1="-92" x2="32" y2="-64" stroke="#2C5BEA" stroke-width="10" stroke-linecap="round"/>
+                  <g id="wrench"><rect x="30" y="-78" width="6" height="22" rx="2" fill="#9AA3B5"/><circle cx="33" cy="-80" r="6" fill="none" stroke="#9AA3B5" stroke-width="3"/></g></g>
+                <circle cx="0" cy="-126" r="25" fill="url(#gSkin)"/>
+                <path d="M-26 -124 C -28 -158 28 -160 26 -126 C 20 -142 4 -146 -6 -136 C -13 -131 -21 -128 -26 -124 Z" fill="url(#gHair)"/>
+                <path d="M-14 -146 C -6 -150 6 -150 12 -146" stroke="#6A6A7A" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/>
+                <path d="M-14 -134 Q-8 -138 -3 -134" stroke="#1A1014" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                <path d="M4 -134 Q10 -138 15 -134" stroke="#1A1014" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+                <g id="eyes">
+                  <ellipse cx="-8" cy="-124" rx="5.5" ry="6.5" fill="#FFFFFF"/><circle cx="-7" cy="-123" r="3.8" fill="#2B1A12"/><circle cx="-5.6" cy="-125" r="1.4" fill="#FFFFFF"/>
+                  <ellipse cx="10" cy="-124" rx="5.5" ry="6.5" fill="#FFFFFF"/><circle cx="11" cy="-123" r="3.8" fill="#2B1A12"/><circle cx="12.4" cy="-125" r="1.4" fill="#FFFFFF"/>
+                </g>
+                <circle cx="-15" cy="-114" r="4.5" fill="#E58A7A" opacity=".45"/><circle cx="17" cy="-114" r="4.5" fill="#E58A7A" opacity=".45"/>
+                <path d="M-7 -112 Q1 -104 9 -112" stroke="#3A1D12" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+                <circle cx="-25" cy="-118" r="2.6" fill="#F4C430"/>
+                <g id="headset" class="fadein"><path d="M-27 -128 A27 27 0 0 1 27 -128" stroke="#FFFFFF" stroke-width="4" fill="none"/><rect x="-31" y="-134" width="8" height="15" rx="4" fill="#FFFFFF"/><rect x="23" y="-134" width="8" height="15" rx="4" fill="#FFFFFF"/><path d="M27 -120 Q26 -108 12 -108" stroke="#FFFFFF" stroke-width="2.5" fill="none"/></g>
+                <g id="radio" class="fadein" stroke="var(--accent)" stroke-width="3" fill="none" stroke-linecap="round"><path d="M-40 -142 Q-50 -126 -40 -110"/><path d="M-52 -150 Q-66 -126 -52 -102"/></g>
+              </g>
+            </g>
+          </g>
+        </g>
+
+        <g id="nodesG" filter="url(#fGlow)"></g>
+      </g></g>
+      <rect id="flash" x="-100" y="-100" width="1200" height="720" fill="#FFFFFF" opacity="0" pointer-events="none"/>
+    </svg>
+  </div>
+  <div class="cap" id="cap" aria-live="polite"></div>
+  <div class="prog"><i id="progBar"></i></div>
+</div>
+
+<!-- ======== PAGE ======== -->
+<main class="wrap" id="page">
+  <header>
+    <div class="eyebrow"><span><b>Open to</b> Director / Head of Data Product roles</span><span>New York Metropolitan Area</span><span>Vanguard · Rutgers</span></div>
+    <h1 id="top" tabindex="-1">Anchor in what I know. <em>Grow into what I don't.</em></h1>
+    <p class="lede">I'm Vrinda, a product leader for data platforms at Vanguard. Engineer, data scientist, then product: one problem the whole way. The data is there, but people can't use it. I build the platforms that fix that.</p>
+    <div class="traits">
+      <div class="trait"><h3>Curious</h3><p>Left engineering for the ETF desks knowing nothing about investing, and learned the business from the inside.</p></div>
+      <div class="trait"><h3>Data-first</h3><p>Unified 128+ sources into one governed semantic layer, and made it AI-ready before anyone asked.</p></div>
+      <div class="trait"><h3>Human-centered</h3><p>Data only matters if people can use it. I taught traders before I built them a platform, and I mentor high schoolers in data science.</p></div>
+    </div>
+    <section class="now">
+      <div class="nowTag">Now building · Vanguard</div>
+      <h2 class="nowH">The investment data platform</h2>
+      <p class="nowP">Vanguard's investment data lived in 128+ silos. Traders and quants pulled it by hand or went without. A year after launch, 120 people in 14 divisions find and use it in one place, through SQL, Python or plain language.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">128+</div><div class="l">siloed sources, now one governed layer</div></div>
+        <div class="stat"><div class="n">120</div><div class="l">active users across 14 divisions, year one</div></div>
+        <div class="stat"><div class="n">1 yr</div><div class="l">from idea to launch</div></div>
+      </div>
+      <ul class="nowL">
+        <li><b>AI-ready by design.</b> Leadership asked for a semantic layer; I built it as an AI foundation. It now feeds a knowledge base and chatbot.</li>
+        <li><b>Leading without authority.</b> I coordinate 10 engineers and 3 product owners, and align 2 to 5 upstream data teams every quarter.</li>
+        <li><b>Built to last.</b> I designed it to work with any technology underneath, so moving to Databricks is an upgrade, not a rebuild. I'm leading that move now.</li>
+      </ul>
+    </section>
+    <div class="cta">
+      <a class="btn primary" href="https://www.linkedin.com/in/vrinda-mohan-0713" target="_blank" rel="noopener">Connect on LinkedIn</a>
+      <a class="btn" href="#stories">Read the stories</a>
+      <a class="btn" href="#graph">Explore my knowledge graph</a>
+      <button class="btn" id="replay">▶ Replay the intro</button>
+    </div>
+  </header>
+
+  <section id="stories" class="stories" aria-labelledby="storiesH">
+    <div class="gh"><div>
+      <h2 id="storiesH">Three calls I'd make again</h2>
+      <p>How I set direction, scale a product, and bring other teams along.</p>
+    </div></div>
+    <div class="storyGrid">
+      <article class="cs" id="cs-ai">
+        <span class="csTag">Strategy</span>
+        <h3>AI-ready before anyone asked</h3>
+        <p class="csHook">Asked for a glossary. I built an AI foundation instead.</p>
+        <p class="csRes"><span>Result</span>It now powers a support chatbot and a SQL generator.</p>
+        <details><summary>Read the story</summary><dl><dt>The situation</dt><dd>Leadership asked for a semantic layer. The easy version was a glossary: a definition for each dataset. That repeats a problem we already had. People defined terms, but nobody connected the data to make it useful.</dd><dt>My call</dt><dd>A glossary describes data. It doesn't solve semantics. AI needs rich, connected metadata to understand data, so I designed the platform as an AI foundation from day one, without waiting for a mandate.</dd><dt>What I did</dt><dd>Built connected metadata into the core: a catalog, lineage, and business vocabulary that links data to business domains instead of to the vendors it came from.</dd><dt>The result</dt><dd>That foundation now powers a support chatbot and a SQL generator that builds entities into our domain structure, moving us from vendor-based to domain-based data. It is ready to feed business knowledge graphs and other chatbots.</dd><dt>What I'd tell a team</dt><dd>Build for where the company is going, not only for the request in front of you.</dd></dl></details>
+      </article>
+      <article class="cs" id="cs-support">
+        <span class="csTag">Scale</span>
+        <h3>Solving support before it hit</h3>
+        <p class="csHook">I predicted the bottleneck would be questions, not data.</p>
+        <p class="csRes"><span>Result</span>Fewer tickets, and 3 to 10 hours a week back for the team.</p>
+        <details><summary>Read the story</summary><dl><dt>The situation</dt><dd>Ten engineers would serve 14 divisions. I knew the bottleneck wouldn't be the data. It would be questions: How do I use this? What data is there? How do I write this in SQL? How do I connect Tableau? Why am I getting this Python error?</dd><dt>My call</dt><dd>Answer the repeat questions before they reach a person, so engineers spend their time on work only they can do.</dd><dt>What I did</dt><dd>Built AI tools on the platform's own knowledge base, including a chatbot for support and user assistance.</dd><dt>The result</dt><dd>Fewer tickets, and users helping themselves, saving the team about 3 to 10 hours a week. The chat logs showed that the tickets still coming in are the complex ones that truly need a human.</dd><dt>What I'd tell a team</dt><dd>Read the logs. They show you where people actually need you.</dd></dl></details>
+      </article>
+      <article class="cs" id="cs-influence">
+        <span class="csTag">Influence</span>
+        <h3>Getting other teams to say yes</h3>
+        <p class="csHook">A data org pushed back. I made saying yes cheaper.</p>
+        <p class="csRes"><span>Result</span>They came on board, and they've stayed engaged.</p>
+        <details><summary>Read the story</summary><dl><dt>The situation</dt><dd>The platform depends on upstream data teams getting their data ready. One data org pushed back: they felt we were asking a lot just to solve one team's problem.</dd><dt>My call</dt><dd>Don't escalate. Make it their win too, and make saying yes cheaper.</dd><dt>What I did</dt><dd>Showed them the impact of the work and how they would benefit. Then we offered our own resources: my team built libraries and helper tools that sped up the work we were asking them to do.</dd><dt>The result</dt><dd>They came on board, and they've stayed. I keep showing them how their data is used and the impact it has, so they feel part of the mission and take on new requests as they come.</dd><dt>What I'd tell a team</dt><dd>Influence is lowering the cost of yes, and sharing the credit after.</dd></dl></details>
+      </article>
+    </div>
+    <div class="storyPanel" id="storyPanel" hidden></div>
+  </section>
+
+  <section id="graph" style="display:flex;flex-direction:column;gap:14px">
+    <div class="gh">
+      <div>
+        <h2>The graph of my work</h2>
+        <p>My career runs left to right along the track: outcomes above each role, decisions below, then skills and certifications. Leadership runs along the top. Tap any node to read its story.</p>
+      </div>
+      <div class="tog" role="group" aria-label="View">
+        <button id="vGraph" aria-pressed="true">Graph</button>
+        <button id="vList" aria-pressed="false">List</button>
+      </div>
+    </div>
+    <div class="chips" id="chips"></div>
+    <div class="board" id="board">
+      <div class="canvas"><svg id="svg" viewBox="0 0 1200 840" role="img" aria-label="Knowledge graph of career roles, outcomes, decisions, skills, certifications and leadership"></svg></div>
+      <aside class="panel" id="panel" aria-live="polite"></aside>
+    </div>
+
+    <!-- The list is the source of truth: readable by people, screen readers and scanners. The graph is built from it. -->
+    <div class="list" id="list" hidden>
+      <article class="li" data-id="me" data-t="person"><div class="ptype">:Person</div><h3>Vrinda</h3><p>Product leader for data platforms. Co-founder, engineer, data scientist and product manager; cognitive science at Rutgers. Curious, data-first, human-centered.</p></article>
+
+      <article class="li" data-id="emalhar" data-t="role" data-yr="2016–19"><div class="ptype">:Role · 2016–2019</div><h3>Co-founder, eMalhar</h3><p>During college. Launched a social e-commerce platform and owned business strategy, product design and customer experience.</p></article>
+      <article class="li" data-id="dev" data-t="role" data-yr="2020–22"><div class="ptype">:Role · 2020–2022</div><h3>Data Engineer</h3><p>Vanguard. Built AWS data pipelines; about a year in, wrote a full pipeline end to end on my own.</p></article>
+      <article class="li" data-id="threec" data-t="role" data-yr="2021"><div class="ptype">:Role · Jan–May 2021</div><h3>PM, 3C Informatics</h3><p>Alongside my engineering job. Led the launch of a teleconsultation platform using Agile.</p></article>
+      <article class="li" data-id="ds" data-t="role" data-yr="2022–24"><div class="ptype">:Role · 2022–2024</div><h3>Data Scientist</h3><p>Vanguard ETF trading desks. Built models and data the desks used to calculate by hand or guess; consulted as an engineer across trading systems.</p></article>
+      <article class="li" data-id="po" data-t="role" data-yr="2023–24"><div class="ptype">:Role · 2023–2024</div><h3>Product Owner</h3><p>Vanguard corporate strategy. A former manager asked for me by name to give a struggling team product direction.</p></article>
+      <article class="li" data-id="tpm" data-t="role" data-yr="2024–now"><div class="ptype">:Role · 2024–now</div><h3>Technical PM, Data Platform</h3><p>Vanguard. Sole technical PM on the investment data platform: vision, UX, roadmap, adoption and delivery, coordinating 10 engineers and 3 product owners.</p></article>
+
+      <article class="li" data-id="o_seller" data-t="outcome"><div class="ptype">:Outcome</div><h3>+25% seller engagement</h3><p>eMalhar: custom platform features and a targeted CRM workflow raised seller engagement 25% and customer satisfaction 20%.</p></article>
+      <article class="li" data-id="o5tb" data-t="outcome"><div class="ptype">:Outcome</div><h3>5 TB+ in under 2 months</h3><p>Ingested and standardized 5 TB+ of global data into the AWS data lake, ahead of schedule.</p></article>
+      <article class="li" data-id="o70" data-t="outcome"><div class="ptype">:Outcome</div><h3>70% fewer errors</h3><p>Built runbooks and tracking dashboards that exposed recurring root causes; fixing them cut application errors 70%.</p></article>
+      <article class="li" data-id="spot" data-t="outcome"><div class="ptype">:Outcome</div><h3>Spot Award</h3><p>Asked to learn Tableau, became the group expert, built 20+ dashboards, and won a Spot Award for bridging IT and the business.</p></article>
+      <article class="li" data-id="o_tele" data-t="outcome"><div class="ptype">:Outcome</div><h3>Teleconsult platform live</h3><p>Launched the teleconsultation platform and cut project turnaround 30% through clear priorities and stakeholder communication.</p></article>
+      <article class="li" data-id="o20" data-t="outcome"><div class="ptype">:Outcome</div><h3>20% faster ETF process</h3><p>Models gave ETF desks insight they did not have before and cut a process's duration 20%.</p></article>
+      <article class="li" data-id="o80" data-t="outcome"><div class="ptype">:Outcome</div><h3>80% more team efficiency</h3><p>Rebuilt dashboards into a self-service pipeline: 80% more team efficiency and 60% faster time to insight.</p></article>
+      <article class="li" data-id="o25" data-t="outcome"><div class="ptype">:Outcome</div><h3>+25% team productivity</h3><p>Cleared blockers through stakeholder relationships and an agile workflow.</p></article>
+      <article class="li" data-id="o128" data-t="outcome"><div class="ptype">:Outcome</div><h3>128+ sources unified</h3><p>128+ previously siloed sources across investment desks and teams, under one governed semantic layer.</p></article>
+      <article class="li" data-id="o120" data-t="outcome"><div class="ptype">:Outcome</div><h3>120 users, 14 divisions</h3><p>120 active users across trading, quant and analytics in year one; 5 to 10 new users every month.</p></article>
+      <article class="li" data-id="chat" data-t="outcome"><div class="ptype">:Outcome</div><h3>Knowledge base + chatbot</h3><p>The platform's business vocabulary feeds a knowledge base that powers a chatbot. The AI-ready bet, paying off.</p></article>
+      <article class="li" data-id="mig" data-t="outcome"><div class="ptype">:Outcome</div><h3>Databricks migration</h3><p>Leading the move from Dremio to Databricks, plus a roadmap for API access to real-time and historical data.</p></article>
+      <article class="li" data-id="exec" data-t="outcome"><div class="ptype">:Outcome</div><h3>Steering committee</h3><p>Presented a year of platform progress to the steering committee that reports to the President.</p></article>
+      <article class="li" data-id="demo" data-t="outcome"><div class="ptype">:Outcome</div><h3>Demos to 300+</h3><p>Ran internal go-to-market with product demos to 300+ employees.</p></article>
+
+      <article class="li" data-id="learn" data-t="decision"><div class="ptype">:Decision</div><h3>Learn the business</h3><p>I knew tech and data, but not investing. So I left engineering for the ETF desks. Anchor in what I know, grow into what I don't.</p></article>
+      <article class="li" data-id="sage" data-t="decision"><div class="ptype">:Decision</div><h3>SageMaker POC</h3><p>As an engineer, spotted a chance to use market data in new ways and started an AWS SageMaker proof of concept. Nobody asked.</p></article>
+      <article class="li" data-id="ai" data-t="decision"><div class="ptype">:Decision</div><h3>Build it AI-ready</h3><p>Leadership asked for a semantic layer. Nobody asked for AI. I saw that stopping there meant rebuilding in two years, so I designed the catalog, lineage, vocabulary and knowledge base as an AI foundation from day one.</p></article>
+      <article class="li" data-id="agn" data-t="decision"><div class="ptype">:Decision</div><h3>Stay tech-agnostic</h3><p>Built regulatory and contractual governance into the architecture, not into a vendor. That makes the move from Dremio to Databricks possible.</p></article>
+      <article class="li" data-id="ux" data-t="decision"><div class="ptype">:Decision</div><h3>Design for business users</h3><p>Designed the UI and UX so people define data in business vocabulary and use it through SQL, Python or plain language.</p></article>
+      <article class="li" data-id="supp" data-t="decision"><div class="ptype">:Decision</div><h3>Solve support first</h3><p>Ten engineers serving 14 desks would drown in questions. I built AI tools that answer repeat questions before the team is asked.</p></article>
+
+      <article class="li" data-id="sk_strat" data-t="skill"><div class="ptype">:Skill</div><h3>Product strategy</h3><p>Product ownership, roadmaps, API strategy and business analysis, from a startup to an enterprise platform.</p></article>
+      <article class="li" data-id="sk_people" data-t="skill"><div class="ptype">:Skill</div><h3>People leadership</h3><p>Led teams of 23, 30+ and 10 with budgets and OKRs, then led the leads across 5 sites. Friend first, high bar.</p></article>
+      <article class="li" data-id="sk_coach" data-t="skill"><div class="ptype">:Skill</div><h3>Coaching</h3><p>Taught traders to use data, mentored high school researchers to awards, and grew a club team from within.</p></article>
+      <article class="li" data-id="sk_brand" data-t="skill"><div class="ptype">:Skill</div><h3>Marketing and GTM</h3><p>Summit branding and marketing, internal go-to-market for the platform, and PR for a student association.</p></article>
+      <article class="li" data-id="sk_sem" data-t="skill"><div class="ptype">:Skill</div><h3>Semantic layer design</h3><p>Business vocabulary as the semantic layer; data catalog and lineage design.</p></article>
+      <article class="li" data-id="sk_model" data-t="skill"><div class="ptype">:Skill</div><h3>Data modeling (dbt)</h3><p>Designed the core dbt data model where the catalog triggers transformations and views automatically.</p></article>
+      <article class="li" data-id="sk_gov" data-t="skill"><div class="ptype">:Skill</div><h3>Data governance</h3><p>Regulatory and contractual rules built into the platform itself.</p></article>
+      <article class="li" data-id="sk_eng" data-t="skill"><div class="ptype">:Skill</div><h3>Data engineering</h3><p>Python, SQL, Hive, AWS (Lambda, Glue, S3, SQS, EventBridge, Aurora), Splunk.</p></article>
+      <article class="li" data-id="sk_plat" data-t="skill"><div class="ptype">:Skill</div><h3>Data platforms</h3><p>Dremio, Databricks and the AWS data lake.</p></article>
+      <article class="li" data-id="sk_ml" data-t="skill"><div class="ptype">:Skill</div><h3>AI / ML</h3><p>Statistics, machine learning, deep learning and AI tooling. Behind the magic, it's just code.</p></article>
+      <article class="li" data-id="sk_viz" data-t="skill"><div class="ptype">:Skill</div><h3>Data visualization</h3><p>Tableau expert: 20+ dashboards and the team's Tableau best practices.</p></article>
+      <article class="li" data-id="sk_ux" data-t="skill"><div class="ptype">:Skill</div><h3>UX design</h3><p>Designed product experiences for sellers, shoppers and business users.</p></article>
+      <article class="li" data-id="sk_agile" data-t="skill"><div class="ptype">:Skill</div><h3>Agile delivery</h3><p>Scrum product ownership, requirements, backlogs and change management.</p></article>
+      <article class="li" data-id="sk_infl" data-t="skill"><div class="ptype">:Skill</div><h3>Cross-team influence</h3><p>Aligns 2 to 5 upstream data teams each quarter with no say over their roadmaps.</p></article>
+      <article class="li" data-id="sk_exec" data-t="skill"><div class="ptype">:Skill</div><h3>Exec communication</h3><p>Steering committee presentations, demos to 300+, and stakeholder management.</p></article>
+
+      <article class="li" data-id="c_aws" data-t="cert"><div class="ptype">:Certification</div><h3>AWS Solutions Architect</h3><p>Associate level, held 2021 to 2024.</p></article>
+      <article class="li" data-id="c_ibm" data-t="cert"><div class="ptype">:Certification</div><h3>IBM Applied AI</h3><p>IBM Applied AI Professional Certificate.</p></article>
+      <article class="li" data-id="c_ml" data-t="cert"><div class="ptype">:Certification</div><h3>Stanford ML Specialization</h3><p>Machine learning and deep learning foundations.</p></article>
+      <article class="li" data-id="c_pspo" data-t="cert"><div class="ptype">:Certification</div><h3>Scrum Product Owner II</h3><p>Professional Scrum Product Owner II.</p></article>
+      <article class="li" data-id="c_mck" data-t="cert"><div class="ptype">:Certification</div><h3>McKinsey Mgmt Accelerator</h3><p>McKinsey Academy's management program.</p></article>
+
+      <article class="li" data-id="prog" data-t="lead"><div class="ptype">:Leadership</div><h3>De facto program lead</h3><p>Runs quarterly delivery across 10 engineers, 3 product owners and upstream teams, including peers' work.</p></article>
+      <article class="li" data-id="teach" data-t="lead"><div class="ptype">:Leadership</div><h3>Taught traders to use data</h3><p>Citizen Developer workshops with 90% positive ratings. The data was there but people lacked the skills, the same problem the platform now solves.</p></article>
+      <article class="li" data-id="mentor" data-t="lead"><div class="ptype">:Leadership</div><h3>Data Nova mentor</h3><p>Summers 2024 and 2025. Took 3 groups of 4 high schoolers from a hypothesis to clean data, a dashboard and a 10-page paper. My groups won awards.</p></article>
+      <article class="li" data-id="leap" data-t="lead"><div class="ptype">:Leadership</div><h3>LEAP events co-chair</h3><p>Six years: event member, then site lead for a 30+ person team with budget and OKRs, then co-chair over site leads at 5 sites. Events for 2,600+.</p></article>
+      <article class="li" data-id="wils" data-t="lead"><div class="ptype">:Leadership</div><h3>IT Women in Leadership</h3><p>Led a team of 10 running marketing and branding for the annual summit for 3 years; co-leads networking events.</p></article>
+      <article class="li" data-id="diya" data-t="lead"><div class="ptype">:Leadership</div><h3>DIYA president</h3><p>Rutgers. Historian to president. Led 23 people and raised $4K+ for Shanti Bhavan. Friend first, president second.</p></article>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <h2>Let's talk</h2>
+    <p>Want to talk data, products or a role? <a href="https://www.linkedin.com/in/vrinda-mohan-0713" target="_blank" rel="noopener" style="color:var(--accent)">Message me on LinkedIn</a>.</p>
+    <p>Languages: fluent English and Malayalam, conversational Hindi, classroom Spanish.</p>
+    <p>Off the clock: F1 race strategy, travel (a trip person, not a vacation person), photography, painting, baking, reading, cinema, and small coding projects.</p>
+  </footer>
+</main>
+
+<script>
+/* ================= GRAPH ================= */
+const TYPES={person:{label:"Person",c:"--t-person"},role:{label:"Role",c:"--t-role"},outcome:{label:"Outcome",c:"--t-outcome"},decision:{label:"Decision",c:"--t-decision"},skill:{label:"Skill",c:"--t-skill"},cert:{label:"Certification",c:"--t-cert"},lead:{label:"Leadership",c:"--t-lead"}};
+const articles=[...document.querySelectorAll("#list .li")];
+const N=articles.map(a=>({id:a.dataset.id,t:a.dataset.t,yr:a.dataset.yr,n:a.querySelector("h3").textContent,d:a.querySelector("p").textContent}));
+const E=[
+ ["me","HELD","emalhar"],["me","HELD","dev"],["me","HELD","threec"],["me","HELD","ds"],["me","HELD","po"],["me","HOLDS","tpm"],["emalhar","THEN","dev"],["dev","ALONGSIDE","threec"],["dev","CHOSE","learn"],["learn","LED_TO","ds"],["ds","THEN","po"],["po","THEN","tpm"],
+ ["emalhar","ACHIEVED","o_seller"],["dev","ACHIEVED","o5tb"],["dev","ACHIEVED","o70"],["dev","EARNED","spot"],["threec","LAUNCHED","o_tele"],
+ ["ds","ACHIEVED","o20"],["ds","ACHIEVED","o80"],["po","ACHIEVED","o25"],
+ ["tpm","DELIVERED","o128"],["tpm","GREW","o120"],["tpm","PRESENTED_AT","exec"],["tpm","RAN","demo"],["demo","DROVE","o120"],["tpm","LEADS","mig"],
+ ["dev","INITIATED","sage"],["tpm","DECIDED","ai"],["tpm","DECIDED","agn"],["tpm","DECIDED","ux"],["tpm","DECIDED","supp"],
+ ["ai","LED_TO","chat"],["tpm","BUILT","chat"],["agn","ENABLED","mig"],["ux","DROVE","o120"],
+ ["emalhar","USED","sk_strat"],["emalhar","USED","sk_ux"],["dev","USED","sk_eng"],["spot","SHOWS","sk_viz"],["threec","USED","sk_agile"],["threec","USED","sk_strat"],
+ ["ds","USED","sk_ml"],["ds","USED","sk_eng"],["ds","USED","sk_viz"],["po","USED","sk_agile"],["po","USED","sk_exec"],
+ ["tpm","USED","sk_sem"],["tpm","USED","sk_model"],["tpm","USED","sk_plat"],["ai","SHOWS","sk_strat"],["supp","SHOWS","sk_ml"],["sage","SHOWS","sk_ml"],
+ ["agn","SHOWS","sk_gov"],["ux","SHOWS","sk_ux"],["o128","SHOWS","sk_infl"],["prog","SHOWS","sk_infl"],["exec","SHOWS","sk_exec"],["mig","SHOWS","sk_plat"],
+ ["c_aws","CERTIFIES","sk_eng"],["c_aws","CERTIFIES","sk_plat"],["c_ibm","CERTIFIES","sk_ml"],["c_ml","CERTIFIES","sk_ml"],["c_pspo","CERTIFIES","sk_agile"],["c_pspo","CERTIFIES","sk_strat"],["c_mck","CERTIFIES","sk_infl"],
+ ["diya","DURING","emalhar"],["leap","ALONGSIDE","dev"],["leap","ALONGSIDE","ds"],["leap","ALONGSIDE","po"],["leap","ALONGSIDE","tpm"],["wils","ALONGSIDE","dev"],["wils","ALONGSIDE","ds"],["wils","ALONGSIDE","po"],["wils","ALONGSIDE","tpm"],["mentor","ALONGSIDE","tpm"],["mentor","SHOWS","sk_ml"],
+ ["dev","RAN","teach"],["teach","SAME_PROBLEM_AS","tpm"],["tpm","INCLUDES","prog"],
+ ["diya","BUILT","sk_people"],["diya","BUILT","sk_brand"],["leap","BUILT","sk_people"],["leap","SHOWS","sk_infl"],
+ ["wils","BUILT","sk_people"],["wils","BUILT","sk_brand"],["mentor","BUILT","sk_coach"],["teach","BUILT","sk_coach"],["teach","SHOWS","sk_viz"],
+ ["prog","SHOWS","sk_agile"],["demo","SHOWS","sk_brand"],["c_mck","CERTIFIES","sk_people"]
+];
+const byId=Object.fromEntries(N.map(n=>[n.id,n]));
+const W=1200,H=840,TY=400;
+const roleOrder=["emalhar","dev","threec","ds","po","tpm"];
+const rx=i=>150+i*190;
+byId.me.x=52;byId.me.y=TY;
+roleOrder.forEach((id,i)=>{byId[id].x=rx(i);byId[id].y=TY});
+/* outcomes stack above their role, decisions below: one column per role, so labels never collide */
+const col={o_seller:"emalhar",o5tb:"dev",o70:"dev",spot:"dev",o_tele:"threec",o20:"ds",o80:"ds",o25:"po",
+  o128:"tpm",o120:"tpm",chat:"tpm",mig:"tpm",exec:"tpm",demo:"tpm",learn:"dev",sage:"dev",ai:"tpm",agn:"tpm",ux:"tpm",supp:"tpm"};
+const stack={};
+N.forEach(n=>{const r=col[n.id];if(!r)return;const key=r+n.t,k=stack[key]=(stack[key]||0)+1;
+  n.x=byId[r].x-80;n.y=n.t==="outcome"?TY-80-(k-1)*34:TY+80+(k-1)*34});
+["diya","teach","leap","wils","mentor","prog"].forEach((id,i)=>{byId[id].x=rx(i);byId[id].y=60});
+const skills=["sk_strat","sk_ux","sk_brand","sk_eng","sk_viz","sk_coach","sk_agile","sk_ml","sk_exec","sk_people","sk_infl","sk_sem","sk_model","sk_gov","sk_plat"];
+skills.forEach((id,i)=>{byId[id].x=90+i*68;byId[id].y=[640,690,740][i%3]});
+["c_aws","c_ibm","c_ml","c_pspo","c_mck"].forEach((id,i)=>{byId[id].x=150+i*225;byId[id].y=800});
+const svg=document.getElementById("svg"),NS="http://www.w3.org/2000/svg";
+svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+const gT=mk("g",{}),gE=mk("g",{}),gN=mk("g",{});svg.append(gT,gE,gN);
+gT.append(mk("line",{x1:52,y1:TY,x2:1100,y2:TY,class:"track"}),mk("line",{x1:52,y1:TY,x2:1100,y2:TY,class:"trackDash"}));
+const band=(y,txt)=>{const t=mk("text",{x:W-16,y,"text-anchor":"end",style:"font:500 11px var(--mono);fill:var(--muted);letter-spacing:.06em"});t.textContent=txt;gT.append(t)};
+band(620,"SKILLS");band(782,"CERTIFICATIONS");band(30,"LEADERSHIP");
+const edgeEls=E.map(([p,r,q])=>{const a=byId[p],b=byId[q];
+  const l=mk("line",{x1:a.x,y1:a.y,x2:b.x,y2:b.y,class:"edge"});gE.append(l);
+  const tx=mk("text",{});return{s:p,t:q,l,tx}});
+const nodeEls={};
+N.forEach(n=>{
+  const g=mk("g",{class:"node "+n.t,tabindex:"0",role:"button","aria-label":TYPES[n.t].label+": "+n.n});
+  const r=n.t==="person"?16:n.t==="role"?12:(n.t==="skill"||n.t==="cert")?7:9;
+  const c=mk("circle",{cx:n.x,cy:n.y,r});c.style.fill=`var(${TYPES[n.t].c})`;g.append(c);
+  let t;
+  if(n.t==="role"||n.t==="person"){
+    t=mk("text",{x:n.x,y:n.y+(n.t==="person"?36:32),"text-anchor":"middle"});
+    if(n.yr){const y=mk("text",{x:n.x,y:n.y-20,"text-anchor":"middle",class:"yr"});y.textContent=n.yr;g.append(y)}
+  }else if(n.t==="outcome"||n.t==="decision"){
+    t=mk("text",{x:n.x+13,y:n.y+4});
+  }else{
+    t=mk("text",{x:n.x,y:n.y+21,"text-anchor":"middle"});
+  }
+  t.textContent=n.n;g.append(t);
+  gN.append(g);nodeEls[n.id]=g;
+  g.addEventListener("click",()=>select(n.id));
+  g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(n.id)}});
+});
+const active=new Set(Object.keys(TYPES));
+const chips=document.getElementById("chips");
+Object.entries(TYPES).filter(([k])=>k!=="person").forEach(([k,v])=>{
+  const b=document.createElement("button");b.className="chip";b.setAttribute("aria-pressed","true");
+  b.innerHTML=`<i style="background:var(${v.c})"></i>:${v.label}`;
+  b.onclick=()=>{active.has(k)?active.delete(k):active.add(k);b.setAttribute("aria-pressed",active.has(k));paint()};
+  chips.append(b);
+});
+let sel="tpm";
+function near(id){const s=new Set([id]);E.forEach(([a,,b])=>{if(a===id)s.add(b);if(b===id)s.add(a)});return s}
+function paint(){
+  const nb=near(sel);
+  N.forEach(n=>{const el=nodeEls[n.id];el.style.display=active.has(n.t)?"":"none";el.classList.toggle("sel",n.id===sel);
+    el.classList.toggle("dim",!nb.has(n.id));el.classList.toggle("near",nb.has(n.id))});
+  edgeEls.forEach(e=>{const vis=active.has(byId[e.s].t)&&active.has(byId[e.t].t);e.l.style.display=e.tx.style.display=vis?"":"none";
+    const hot=e.s===sel||e.t===sel;e.l.classList.toggle("hot",hot);e.tx.classList.toggle("hot",hot);e.l.classList.toggle("dim",!hot)});
+  articles.forEach(a=>a.hidden=!active.has(a.dataset.t));
+}
+function select(id){sel=id;paint();renderPanel()}
+function renderPanel(){
+  const n=byId[sel],p=document.getElementById("panel");p.dataset.t=n.t;
+  const rels=E.filter(([a,,b])=>a===sel||b===sel);
+  const CS={ai:"cs-ai",chat:"cs-ai",supp:"cs-support",infl:"cs-influence",sk_infl:"cs-influence",o128:"cs-influence"};
+  p.innerHTML=`<div class="ptype">:${TYPES[n.t].label}${n.yr?" · "+n.yr:""}</div><h3>${n.n}</h3><p>${n.d}</p>${CS[sel]?`<p><a class="csLink" href="#${CS[sel]}">Read the story →</a></p>`:""}
+  <ul class="rel">${rels.map(([a,r,b])=>{const o=a===sel?b:a;
+    const txt=a===sel?`(this)-[:${r}]→(<span>${byId[b].n}</span>)`:`(<span>${byId[a].n}</span>)-[:${r}]→(this)`;
+    return `<li><button data-id="${o}">${txt}</button></li>`}).join("")}</ul><div class="hint">Tap a relationship to follow it.</div>`;
+  p.querySelectorAll("button[data-id]").forEach(b=>b.onclick=()=>select(b.dataset.id));
+}
+const vG=document.getElementById("vGraph"),vL=document.getElementById("vList");
+function view(g){vG.setAttribute("aria-pressed",g);vL.setAttribute("aria-pressed",!g);document.getElementById("board").hidden=!g;document.getElementById("list").hidden=g}
+vG.onclick=()=>view(true);vL.onclick=()=>view(false);
+if(window.innerWidth<700)view(false);
+select("tpm");
+
+/* ================= INTRO ================= */
+const $=id=>document.getElementById(id);
+const intro=$("intro"),cap=$("cap"),bar=$("progBar"),stage=$("stage"),avatarMove=$("avatarMove"),carMove=$("carMove"),cam=$("cam");
+const PARTS=["pChassis","pBody","pEngine","pSteer","pWing"];
+// pit crew: rounded, helmeted, in team white
+const crewX=[214,430,600,712];
+crewX.forEach((x,i)=>{
+  const outer=mk("g",{transform:`translate(${x} 440)`});
+  const g=mk("g",{class:"crew",id:"crew"+i});g.style.transitionDelay=`${i*0.16}s`;
+  g.append(mk("ellipse",{cx:0,cy:0,rx:22,ry:4,fill:"#000",opacity:.25,filter:"url(#fBlur)"}),
+    mk("rect",{x:-11,y:-40,width:9,height:39,rx:4,fill:"#0F1E5C"}),mk("rect",{x:2,y:-40,width:9,height:39,rx:4,fill:"#0F1E5C"}),
+    mk("rect",{x:-16,y:-88,width:32,height:52,rx:14,fill:"url(#gWhite)"}),mk("rect",{x:-16,y:-70,width:32,height:6,fill:"#2452E0"}),
+    mk("circle",{cx:0,cy:-104,r:17,fill:"url(#gBody)"}),mk("rect",{x:-1,y:-110,width:19,height:10,rx:5,fill:"#0A1230"}),
+    mk("rect",{x:3,y:-108,width:7,height:3,rx:1.5,fill:"#FFFFFF",opacity:.6}));
+  outer.append(g);$("crewG").append(outer);
+});
+// the wow: nodes that start on the car and fly into a graph
+const nodeData=[];let ns=11;const r2=()=>(ns=(ns*9301+49297)%233280)/233280;
+const typeCol={me:"var(--fg)",role:"var(--fg)",outcome:"var(--t-outcome)",decision:"var(--t-decision)",skill:"var(--t-skill)",lead:"var(--t-lead)"};
+nodeData.push({t:"me",x:90,y:280});
+for(let i=0;i<6;i++){const x=200+i*130;nodeData.push({t:"role",x,y:280,role:i});
+  nodeData.push({t:i%2?"decision":"outcome",x:x-26,y:190-r2()*20,p:i},{t:"outcome",x:x+28,y:140-r2()*30,p:i},
+    {t:"skill",x:x-22,y:370+r2()*20,p:i},{t:i%2?"lead":"skill",x:x+30,y:420+r2()*14,p:i});}
+const nodesG=$("nodesG");
+const nodeEls2=nodeData.map((d,i)=>{const c=mk("circle",{cx:0,cy:0,r:d.t==="role"||d.t==="me"?10:6,class:"node2",fill:typeCol[d.t]});
+  c.style.transitionDelay=`${i*18}ms`;nodesG.append(c);return c});
+const edgeData=[];nodeData.forEach((d,i)=>{if(d.t==="role")edgeData.push([i,i===1?0:i-5]);if(d.p!==undefined)edgeData.push([i,1+d.p*5])});
+const edgeEls2=edgeData.map(([a,b])=>{const l=mk("line",{x1:nodeData[a].x,y1:nodeData[a].y,x2:nodeData[b].x,y2:nodeData[b].y,pathLength:1,class:"edge2"});nodesG.insertBefore(l,nodesG.firstChild);return l});
+
+let timers=[],raf,t0,counters=[];
+const later=(f,ms)=>timers.push(setTimeout(f,ms));
+const on=(...ids)=>ids.forEach(i=>$(i).classList.add("on"));
+const off=(...ids)=>ids.forEach(i=>$(i).classList.remove("on"));
+function setCap(html){cap.classList.add("fade");later(()=>{cap.innerHTML=html;cap.classList.remove("fade")},200)}
+function countUp(id,to,ms,suffix){const st=performance.now();const f=()=>{const el=$(id);if(!el)return;const p=Math.min(1,(performance.now()-st)/ms);el.textContent=Math.round(to*(1-Math.pow(1-p,3)))+(p===1?suffix||"":"");if(p<1)counters.push(requestAnimationFrame(f))};f()}
+function look(cx,cy,z){cam.style.transform=z===1?"none":`translate(${cx}px,${cy}px) scale(${z}) translate(${-cx}px,${-cy}px)`}
+function drop(id){const el=$(id);el.classList.remove("gone","fast","land","float");void el.getBoundingClientRect();el.classList.add("land")}
+function flash(){const f=$("flash");f.classList.remove("flash");void f.getBoundingClientRect();f.classList.add("flash")}
+const FLOAT={pWing:["-80px","-150px","-12deg"],pChassis:["0px","-30px","0deg"],pBody:["60px","-160px","7deg"],pEngine:["-50px","-240px","-10deg"],pSteer:["170px","-250px","14deg"]};
+function floatAll(){PARTS.forEach((id,i)=>{const el=$(id);el.style.setProperty("--sx",FLOAT[id][0]);el.style.setProperty("--sy",FLOAT[id][1]);el.style.setProperty("--sr",FLOAT[id][2]);
+  el.querySelector(".sq").style.animationDelay=`${-i*0.6}s`;later(()=>{el.classList.remove("gone");el.classList.add("float")},i*160)})}
+const SCENES=[
+ {ms:3800,go:()=>{on("grid");floatAll();later(()=>{on("avatar");stage.classList.add("wave")},500);later(()=>stage.classList.remove("wave"),3000);
+   later(()=>setCap(`Hi, I'm Vrinda! <em>Welcome to my world of data!</em>`),600)}},
+ {ms:6400,cap:`Getting data to work takes a lot of parts!<span class="sub">Some say building an F1 car is easier. (I am not qualified to build one.)</span>`,go:()=>{look(470,300,1.04)}},
+ {ms:4600,cap:`<span class="lap">CHASSIS · ENGINEER, 2020</span>I started as an engineer, so I know data from the ground up.`,go:()=>{look(430,400,1.2);stage.classList.add("build");later(()=>{drop("pChassis");on("sparks")},400)}},
+ {ms:6600,cap:`<span class="lap">ENGINE · DATA SCIENTIST, 2022</span>Then I sat with the people using it, to learn what they need.<span class="sub">Their needs change as we grow, the way a car changes for every track.</span>`,go:()=>{look(440,380,1.16);drop("pBody");later(()=>drop("pEngine"),700)}},
+ {ms:5600,cap:`<span class="lap">STEERING · PRODUCT, 2024</span>I set the direction, and anticipate the turns.<span class="sub">I made the platform AI-ready before anyone asked.</span>`,go:()=>{look(500,370,1.22);drop("pSteer");
+   later(()=>{look(500,300,1);stage.classList.remove("build");off("sparks");on("pitwall");stage.classList.add("walk");avatarMove.style.transform="translateX(805px)"},1600);
+   later(()=>{stage.classList.remove("walk");stage.classList.add("atwall");on("headset")},3150)}},
+ {ms:6000,cap:`<span class="lap">CREW</span>No one wins alone! I grow the people around me, on my team and beyond it.<span class="sub">10 engineers · 3 product owners · volunteer teams of 30+</span>`,go:()=>{[0,1,2,3].forEach(i=>on("crew"+i));later(()=>stage.classList.add("point"),700)}},
+ {ms:6200,cap:`<span class="lap">FINE-TUNING</span>I tune with data, and never stop asking questions.<span class="sub">Year one of my platform: 128+ data sources in one place, used by 120 people across 14 divisions.</span>`,go:()=>{stage.classList.remove("point");drop("pWing");later(()=>{on("telem");stage.classList.add("tune")},600)}},
+ {ms:4800,cap:`Want to see more? <em>Take a look under the hood!</em>`,go:()=>{stage.classList.remove("tune");
+   [0,1,2,3].forEach(i=>off("crew"+i));$("avatar").classList.add("bye");off("pitwall","grid");
+   nodeEls2.forEach(c=>{c.style.transition="none";c.style.opacity=1;c.style.transform=`translate(${270+r2()*410}px,${340+r2()*90}px)`});
+   void nodesG.getBoundingClientRect();nodeEls2.forEach(c=>c.style.transition="");
+   PARTS.forEach(id=>{const el=$(id);el.style.setProperty("--sx","0px");el.style.setProperty("--sy","0px");el.classList.add("fast","gone")});
+   later(()=>{flash();nodeEls2.forEach((c,i)=>c.style.transform=`translate(${nodeData[i].x}px,${nodeData[i].y}px)`)},500);
+   later(()=>edgeEls2.forEach(l=>l.classList.add("on")),1700)}}
+];
+const TOTAL=SCENES.reduce((a,x)=>a+x.ms,0);
+function reset(){
+  timers.forEach(clearTimeout);timers=[];cancelAnimationFrame(raf);counters.forEach(cancelAnimationFrame);counters=[];
+  ["grid","avatar","pitwall","telem","headset","sparks","crew0","crew1","crew2","crew3"].forEach(i=>off(i));$("avatar").classList.remove("bye");
+  [carMove,avatarMove,cam].forEach(el=>el.style.transition="none");
+  carMove.style.transform="none";avatarMove.style.transform="translateX(160px)";cam.style.transform="none";
+  PARTS.forEach(id=>{const el=$(id);el.style.transition="none";el.classList.remove("fast","land","float");el.classList.add("gone");el.style.setProperty("--sx",FLOAT[id][0]);el.style.setProperty("--sy",FLOAT[id][1]);el.style.setProperty("--sr",FLOAT[id][2])});
+  nodeEls2.forEach(c=>{c.style.opacity=0});edgeEls2.forEach(l=>l.classList.remove("on"));
+  void stage.getBoundingClientRect();
+  [carMove,avatarMove,cam].forEach(el=>el.style.transition="");PARTS.forEach(id=>$(id).style.transition="");
+  stage.classList.remove("moving","build","walk","point","tune","atwall","wave");cap.innerHTML="";bar.style.width="0";
+}
+function tick(){const p=Math.min(1,(performance.now()-t0)/TOTAL);bar.style.width=p*100+"%";if(p<1)raf=requestAnimationFrame(tick)}
+function play(){
+  reset();intro.hidden=false;intro.classList.remove("out");document.body.style.overflow="hidden";
+  let at=0;SCENES.forEach(sc=>{later(()=>{if(sc.cap)setCap(sc.cap);sc.go()},at);at+=sc.ms});
+  later(finish,TOTAL);t0=performance.now();tick();$("skip").focus();
+}
+function finish(){
+  timers.forEach(clearTimeout);timers=[];cancelAnimationFrame(raf);
+  intro.classList.add("out");document.body.style.overflow="";
+  setTimeout(()=>{intro.hidden=true;$("top").focus({preventScroll:true})},600);
+}
+$("skip").onclick=finish;$("replay").onclick=play;
+intro.addEventListener("keydown",e=>{if(e.key==="Escape")finish()});
+if(!matchMedia("(prefers-reduced-motion: reduce)").matches)play();
+
+/* stories: on wide screens, a story opens in one full-width panel under the cards */
+const wide=matchMedia("(min-width:901px)"),panel=document.getElementById("storyPanel");
+function openStory(id){const card=document.getElementById(id);if(!card)return;
+  if(!wide.matches){card.querySelector("details").open=true;card.scrollIntoView({behavior:"smooth",block:"start"});return}
+  const already=card.classList.contains("active");
+  document.querySelectorAll(".cs").forEach(c=>{c.classList.remove("active");c.querySelector("summary").textContent="Read the story"});
+  if(already){panel.hidden=true;return}
+  card.classList.add("active");card.querySelector("summary").textContent="Close the story";
+  panel.innerHTML=`<div class="spHead"><h3>${card.querySelector("h3").textContent}</h3><button type="button" id="spClose">Close ✕</button></div><dl>${card.querySelector("dl").innerHTML}</dl>`;
+  panel.hidden=false;document.getElementById("spClose").onclick=()=>openStory(id);
+  panel.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+document.querySelectorAll(".cs summary").forEach(sm=>sm.addEventListener("click",e=>{if(wide.matches){e.preventDefault();openStory(sm.closest(".cs").id)}}));
+document.addEventListener("click",e=>{const a=e.target.closest('a[href^="#cs-"]');if(a){e.preventDefault();openStory(a.getAttribute("href").slice(1))}});
+
+</script>
+
+</html>
