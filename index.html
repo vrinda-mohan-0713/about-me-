@@ -176,6 +176,18 @@ button{font-family:inherit}
 .storyPanel dt:last-of-type,.storyPanel dd:last-of-type{color:var(--fg);font-weight:600}
 .cs.active{border-color:var(--accent)}
 
+.sheetClose{display:none}
+#svg.mobile .edge.dim{opacity:0}
+#svg.mobile .node text{font-size:13px}
+#svg.mobile .node.role text{font-size:14px}
+#svg.mobile .node.dim{opacity:.35}
+@media (max-width:699px){
+  .board .panel{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:40;max-height:55vh;overflow:auto;border-radius:16px 16px 0 0;border-bottom:0;
+    padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));
+    box-shadow:0 -8px 30px rgba(0,0,0,.25)}
+  .sheetClose{display:block;position:sticky;top:0;margin-left:auto;font:500 14px var(--body);background:var(--surface);color:var(--muted);border:1px solid var(--line);border-radius:999px;width:32px;height:32px;cursor:pointer}
+}
+
 /* ---------- page ---------- */
 .wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px;display:flex;flex-direction:column;gap:44px}
 .eyebrow{font:400 13px var(--mono);color:var(--muted);letter-spacing:.02em;display:flex;flex-wrap:wrap;gap:6px 14px}
@@ -402,11 +414,11 @@ footer p{margin:0;color:var(--muted);font-size:15px}
   <header>
     <div class="eyebrow"><span><b>Product leader</b> for data platforms</span><span>New York Metropolitan Area</span><span>Vanguard · Rutgers</span></div>
     <h1 id="top" tabindex="-1">Anchor in what I know. <em>Grow into what I don't.</em></h1>
-    <p class="lede">I'm Vrinda, a product leader for data platforms at Vanguard. Engineer, data scientist, then product: one problem the whole way. The data is there, but people can't use it. I build the platforms that fix that.</p>
+    <p class="lede">I'm Vrinda, a product leader for data platforms at Vanguard. Engineer, data scientist, then product: one problem the whole way. The data is there, but people can't use it. I lead the platforms that fix that.</p>
     <div class="traits">
       <div class="trait"><h3>Curious</h3><p>Left engineering for the ETF desks knowing nothing about investing, and learned the business from the inside.</p></div>
-      <div class="trait"><h3>Data-first</h3><p>Unified 100+ sources into one governed semantic layer, and made it AI-ready before anyone asked.</p></div>
-      <div class="trait"><h3>Human-centered</h3><p>Data only matters if people can use it. I taught traders before I built them a platform, and I mentor high schoolers in data science.</p></div>
+      <div class="trait"><h3>Data-first</h3><p>Led the unification of 100+ sources into one governed semantic layer, and pushed for it to be AI-ready before anyone asked.</p></div>
+      <div class="trait"><h3>Human-centered</h3><p>Data only matters if people can use it. I taught traders before I led building them a platform, and I mentor high schoolers in data science.</p></div>
     </div>
     <section class="now">
       <div class="nowTag">Now building · Vanguard</div>
@@ -418,10 +430,10 @@ footer p{margin:0;color:var(--muted);font-size:15px}
         <div class="stat"><div class="n">1 yr</div><div class="l">from idea to launch</div></div>
       </div>
       <ul class="nowL">
-        <li><b>AI-ready by design.</b> Leadership asked for a semantic layer; I built it as an AI foundation. It now feeds a knowledge base and chatbot.</li>
-        <li><b>Governed by design.</b> I built regulatory and contractual rules into the platform itself, so governance scales with the product instead of slowing it down.</li>
+        <li><b>AI-ready by design.</b> Leadership asked for a semantic layer; I set the vision for an AI foundation, and the team built it. It now feeds a knowledge base and chatbot.</li>
+        <li><b>Governed by design.</b> I made regulatory and contractual rules part of the platform's requirements from day one, so governance scales with the product instead of slowing it down.</li>
         <li><b>Leading without authority.</b> I coordinate engineers and product owners, and align multiple upstream data teams every quarter.</li>
-        <li><b>Built to last.</b> I designed it to work with any technology underneath, so moving to Databricks is an upgrade, not a rebuild. I'm leading that move now.</li>
+        <li><b>Built to last.</b> I set the requirement that it work with any technology underneath, so moving to Databricks is an upgrade, not a rebuild. I'm leading that move now.</li>
       </ul>
     </section>
     <div class="cta">
@@ -441,16 +453,16 @@ footer p{margin:0;color:var(--muted);font-size:15px}
       <article class="cs" id="cs-ai">
         <span class="csTag">Strategy</span>
         <h3>AI-ready before anyone asked</h3>
-        <p class="csHook">Asked for a glossary. I built an AI foundation instead.</p>
+        <p class="csHook">Asked for a glossary. I pushed for an AI foundation instead.</p>
         <p class="csRes"><span>Result</span>It now powers a support chatbot and a SQL generator.</p>
-        <details><summary>Read the story</summary><dl><dt>The situation</dt><dd>Leadership asked for a semantic layer. The easy version was a glossary: a definition for each dataset. That repeats a problem we already had. People defined terms, but nobody connected the data to make it useful.</dd><dt>My call</dt><dd>A glossary describes data. It doesn't solve semantics. AI needs rich, connected metadata to understand data, so I designed the platform as an AI foundation from day one, without waiting for a mandate.</dd><dt>What I did</dt><dd>Built connected metadata into the core: a catalog, lineage, and business vocabulary that links data to business domains instead of to the vendors it came from.</dd><dt>The result</dt><dd>That foundation now powers a support chatbot and a SQL generator that builds entities into our domain structure, moving us from vendor-based to domain-based data. It is ready to feed business knowledge graphs and other chatbots.</dd><dt>What I'd tell a team</dt><dd>Build for where the company is going, not only for the request in front of you.</dd></dl></details>
+        <details><summary>Read the story</summary><dl><dt>The situation</dt><dd>Leadership asked for a semantic layer. The easy version was a glossary: a definition for each dataset. That repeats a problem we already had. People defined terms, but nobody connected the data to make it useful.</dd><dt>My call</dt><dd>A glossary describes data. It doesn't solve semantics. AI needs rich, connected metadata to understand data, so I set the vision for an AI foundation from day one, without waiting for a mandate.</dd><dt>What I did</dt><dd>Defined the requirements for connected metadata at the core: a catalog, lineage, and business vocabulary that links data to business domains instead of to the vendors it came from. Then I whiteboarded the flows, UI and edge cases with the engineering team, who built it.</dd><dt>The result</dt><dd>That foundation now powers a support chatbot and a SQL generator that builds entities into our domain structure, moving us from vendor-based to domain-based data. It is ready to feed business knowledge graphs and other chatbots.</dd><dt>What I'd tell a team</dt><dd>Build for where the company is going, not only for the request in front of you.</dd></dl></details>
       </article>
       <article class="cs" id="cs-support">
         <span class="csTag">Scale</span>
         <h3>Solving support before it hit</h3>
         <p class="csHook">I predicted the bottleneck would be questions, not data.</p>
         <p class="csRes"><span>Result</span>Fewer tickets, and hours back every week for the team.</p>
-        <details><summary>Read the story</summary><dl><dt>The situation</dt><dd>A small engineering team would serve more than a dozen divisions. I knew the bottleneck wouldn't be the data. It would be questions: How do I use this? What data is there? How do I write this in SQL? How do I connect Tableau? Why am I getting this Python error?</dd><dt>My call</dt><dd>Answer the repeat questions before they reach a person, so engineers spend their time on work only they can do.</dd><dt>What I did</dt><dd>Built AI tools on the platform's own knowledge base, including a chatbot for support and user assistance.</dd><dt>The result</dt><dd>Fewer tickets, and users helping themselves, giving the team hours back every week. The chat logs showed that the tickets still coming in are the complex ones that truly need a human.</dd><dt>What I'd tell a team</dt><dd>Read the logs. They show you where people actually need you.</dd></dl></details>
+        <details><summary>Read the story</summary><dl><dt>The situation</dt><dd>A small engineering team would serve more than a dozen divisions. I knew the bottleneck wouldn't be the data. It would be questions: How do I use this? What data is there? How do I write this in SQL? How do I connect Tableau? Why am I getting this Python error?</dd><dt>My call</dt><dd>Answer the repeat questions before they reach a person, so engineers spend their time on work only they can do.</dd><dt>What I did</dt><dd>Defined AI tools on the platform's own knowledge base, including a chatbot for support and user assistance, and worked through the flows and edge cases with the team as they built them.</dd><dt>The result</dt><dd>Fewer tickets, and users helping themselves, giving the team hours back every week. The chat logs showed that the tickets still coming in are the complex ones that truly need a human.</dd><dt>What I'd tell a team</dt><dd>Read the logs. They show you where people actually need you.</dd></dl></details>
       </article>
       <article class="cs" id="cs-influence">
         <span class="csTag">Influence</span>
@@ -467,7 +479,7 @@ footer p{margin:0;color:var(--muted);font-size:15px}
     <div class="gh">
       <div>
         <h2>The graph of my work</h2>
-        <p>My career runs left to right along the track: outcomes above each role, decisions below, then skills and certifications. Leadership runs along the top. Tap any node to read its story.</p>
+        <p>My career runs along the track, with each role's outcomes and decisions beside it, plus leadership, skills and certifications. Tap any node to see its story and what it connects to.</p>
       </div>
       <div class="tog" role="group" aria-label="View">
         <button id="vGraph" aria-pressed="true">Graph</button>
@@ -508,23 +520,23 @@ footer p{margin:0;color:var(--muted);font-size:15px}
 
       <article class="li" data-id="learn" data-t="decision"><div class="ptype">:Decision</div><h3>Learn the business</h3><p>I knew tech and data, but not investing. So I left engineering for the ETF desks. Anchor in what I know, grow into what I don't.</p></article>
       <article class="li" data-id="sage" data-t="decision"><div class="ptype">:Decision</div><h3>SageMaker POC</h3><p>As an engineer, spotted a chance to use market data in new ways and started an AWS SageMaker proof of concept. Nobody asked.</p></article>
-      <article class="li" data-id="ai" data-t="decision"><div class="ptype">:Decision</div><h3>Build it AI-ready</h3><p>Leadership asked for a semantic layer. Nobody asked for AI. I saw that stopping there meant rebuilding in two years, so I designed the catalog, lineage, vocabulary and knowledge base as an AI foundation from day one.</p></article>
-      <article class="li" data-id="agn" data-t="decision"><div class="ptype">:Decision</div><h3>Stay tech-agnostic</h3><p>Built regulatory and contractual governance into the architecture, not into a vendor. That makes the move from Dremio to Databricks possible.</p></article>
-      <article class="li" data-id="ux" data-t="decision"><div class="ptype">:Decision</div><h3>Design for business users</h3><p>Designed the UI and UX so people define data in business vocabulary and use it through SQL, Python or plain language.</p></article>
-      <article class="li" data-id="supp" data-t="decision"><div class="ptype">:Decision</div><h3>Solve support first</h3><p>A small engineering team serving more than a dozen divisions would drown in questions. I built AI tools that answer repeat questions before the team is asked.</p></article>
+      <article class="li" data-id="ai" data-t="decision"><div class="ptype">:Decision</div><h3>Build it AI-ready</h3><p>Leadership asked for a semantic layer. Nobody asked for AI. I saw that stopping there meant rebuilding in two years, so I set the requirements for the catalog, lineage, vocabulary and knowledge base as an AI foundation from day one, and the team built it.</p></article>
+      <article class="li" data-id="agn" data-t="decision"><div class="ptype">:Decision</div><h3>Stay tech-agnostic</h3><p>Required regulatory and contractual governance to live in the architecture, not in a vendor. That makes the move from Dremio to Databricks possible.</p></article>
+      <article class="li" data-id="ux" data-t="decision"><div class="ptype">:Decision</div><h3>Design for business users</h3><p>Shaped the UI and UX, whiteboarding flows and edge cases with the team, so people define data in business vocabulary and use it through SQL, Python or plain language.</p></article>
+      <article class="li" data-id="supp" data-t="decision"><div class="ptype">:Decision</div><h3>Solve support first</h3><p>A small engineering team serving more than a dozen divisions would drown in questions. I pushed for AI tools that answer repeat questions before the team is asked, and the team built them.</p></article>
 
       <article class="li" data-id="sk_strat" data-t="skill"><div class="ptype">:Skill</div><h3>Product strategy</h3><p>Product ownership, roadmaps, API strategy and business analysis, from a startup to an enterprise platform.</p></article>
       <article class="li" data-id="sk_people" data-t="skill"><div class="ptype">:Skill</div><h3>People leadership</h3><p>Led teams of 23, 30+ and 10 with budgets and OKRs, then led the leads across 5 sites. Friend first, high bar.</p></article>
       <article class="li" data-id="sk_coach" data-t="skill"><div class="ptype">:Skill</div><h3>Coaching</h3><p>Taught traders to use data, mentored high school researchers to awards, and grew a club team from within.</p></article>
       <article class="li" data-id="sk_brand" data-t="skill"><div class="ptype">:Skill</div><h3>Marketing and GTM</h3><p>Summit branding and marketing, internal go-to-market for the platform, and PR for a student association.</p></article>
       <article class="li" data-id="sk_sem" data-t="skill"><div class="ptype">:Skill</div><h3>Semantic layer design</h3><p>Business vocabulary as the semantic layer; data catalog and lineage design.</p></article>
-      <article class="li" data-id="sk_model" data-t="skill"><div class="ptype">:Skill</div><h3>Data modeling (dbt)</h3><p>Designed the core dbt data model where the catalog triggers transformations and views automatically.</p></article>
+      <article class="li" data-id="sk_model" data-t="skill"><div class="ptype">:Skill</div><h3>Catalog automation</h3><p>Defined the requirements to automate view creation; engineering built it with dbt, so new data catalog entries trigger transformation and view creation without manual work.</p></article>
       <article class="li" data-id="sk_gov" data-t="skill"><div class="ptype">:Skill</div><h3>Data governance</h3><p>Regulatory and contractual rules built into the platform itself.</p></article>
       <article class="li" data-id="sk_eng" data-t="skill"><div class="ptype">:Skill</div><h3>Data engineering</h3><p>Python, SQL, Hive, AWS (Lambda, Glue, S3, SQS, EventBridge, Aurora), Splunk.</p></article>
       <article class="li" data-id="sk_plat" data-t="skill"><div class="ptype">:Skill</div><h3>Data platforms</h3><p>Dremio, Databricks and the AWS data lake.</p></article>
       <article class="li" data-id="sk_ml" data-t="skill"><div class="ptype">:Skill</div><h3>AI / ML</h3><p>Statistics, machine learning, deep learning and AI tooling. Behind the magic, it's just code.</p></article>
       <article class="li" data-id="sk_viz" data-t="skill"><div class="ptype">:Skill</div><h3>Data visualization</h3><p>Tableau expert: 20+ dashboards and the team's Tableau best practices.</p></article>
-      <article class="li" data-id="sk_ux" data-t="skill"><div class="ptype">:Skill</div><h3>UX design</h3><p>Designed product experiences for sellers, shoppers and business users.</p></article>
+      <article class="li" data-id="sk_ux" data-t="skill"><div class="ptype">:Skill</div><h3>UX design</h3><p>Shaped product experiences through flows and requirements, for sellers, shoppers and business users.</p></article>
       <article class="li" data-id="sk_agile" data-t="skill"><div class="ptype">:Skill</div><h3>Agile delivery</h3><p>Scrum product ownership, requirements, backlogs and change management.</p></article>
       <article class="li" data-id="sk_infl" data-t="skill"><div class="ptype">:Skill</div><h3>Cross-team influence</h3><p>Aligns multiple upstream data teams each quarter with no say over their roadmaps.</p></article>
       <article class="li" data-id="sk_exec" data-t="skill"><div class="ptype">:Skill</div><h3>Exec communication</h3><p>Steering committee presentations, demos to 300+, and stakeholder management.</p></article>
@@ -576,50 +588,68 @@ const E=[
  ["prog","SHOWS","sk_agile"],["demo","SHOWS","sk_brand"],["c_mck","CERTIFIES","sk_people"]
 ];
 const byId=Object.fromEntries(N.map(n=>[n.id,n]));
-const W=1200,H=840,TY=400;
+const svg=document.getElementById("svg"),NS="http://www.w3.org/2000/svg";
+const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
 const roleOrder=["emalhar","dev","threec","ds","po","tpm"];
-const rx=i=>150+i*190;
-byId.me.x=52;byId.me.y=TY;
-roleOrder.forEach((id,i)=>{byId[id].x=rx(i);byId[id].y=TY});
-/* outcomes stack above their role, decisions below: one column per role, so labels never collide */
 const col={o_seller:"emalhar",o5tb:"dev",o70:"dev",spot:"dev",o_tele:"threec",o20:"ds",o80:"ds",o25:"po",
   o128:"tpm",o120:"tpm",chat:"tpm",mig:"tpm",exec:"tpm",demo:"tpm",learn:"dev",sage:"dev",ai:"tpm",agn:"tpm",ux:"tpm",supp:"tpm"};
-const stack={};
-N.forEach(n=>{const r=col[n.id];if(!r)return;const key=r+n.t,k=stack[key]=(stack[key]||0)+1;
-  n.x=byId[r].x-80;n.y=n.t==="outcome"?TY-80-(k-1)*34:TY+80+(k-1)*34});
-["diya","teach","leap","wils","mentor","prog"].forEach((id,i)=>{byId[id].x=rx(i);byId[id].y=60});
+const leadOrder=["diya","teach","leap","wils","mentor","prog"];
 const skills=["sk_strat","sk_ux","sk_brand","sk_eng","sk_viz","sk_coach","sk_agile","sk_ml","sk_exec","sk_people","sk_infl","sk_sem","sk_model","sk_gov","sk_plat"];
-skills.forEach((id,i)=>{byId[id].x=90+i*68;byId[id].y=[640,690,740][i%3]});
-["c_aws","c_ibm","c_ml","c_pspo","c_mck"].forEach((id,i)=>{byId[id].x=150+i*225;byId[id].y=800});
-const svg=document.getElementById("svg"),NS="http://www.w3.org/2000/svg";
-svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
-const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
-const gT=mk("g",{}),gE=mk("g",{}),gN=mk("g",{});svg.append(gT,gE,gN);
-gT.append(mk("line",{x1:52,y1:TY,x2:1100,y2:TY,class:"track"}),mk("line",{x1:52,y1:TY,x2:1100,y2:TY,class:"trackDash"}));
-const band=(y,txt)=>{const t=mk("text",{x:W-16,y,"text-anchor":"end",style:"font:500 11px var(--mono);fill:var(--muted);letter-spacing:.06em"});t.textContent=txt;gT.append(t)};
-band(620,"SKILLS");band(782,"CERTIFICATIONS");band(30,"LEADERSHIP");
-const edgeEls=E.map(([p,r,q])=>{const a=byId[p],b=byId[q];
-  const l=mk("line",{x1:a.x,y1:a.y,x2:b.x,y2:b.y,class:"edge"});gE.append(l);
-  const tx=mk("text",{});return{s:p,t:q,l,tx}});
-const nodeEls={};
-N.forEach(n=>{
-  const g=mk("g",{class:"node "+n.t,tabindex:"0",role:"button","aria-label":TYPES[n.t].label+": "+n.n});
-  const r=n.t==="person"?16:n.t==="role"?12:(n.t==="skill"||n.t==="cert")?7:9;
-  const c=mk("circle",{cx:n.x,cy:n.y,r});c.style.fill=`var(${TYPES[n.t].c})`;g.append(c);
-  let t;
-  if(n.t==="role"||n.t==="person"){
-    t=mk("text",{x:n.x,y:n.y+(n.t==="person"?36:32),"text-anchor":"middle"});
-    if(n.yr){const y=mk("text",{x:n.x,y:n.y-20,"text-anchor":"middle",class:"yr"});y.textContent=n.yr;g.append(y)}
-  }else if(n.t==="outcome"||n.t==="decision"){
-    t=mk("text",{x:n.x+13,y:n.y+4});
-  }else{
-    t=mk("text",{x:n.x,y:n.y+21,"text-anchor":"middle"});
-  }
-  t.textContent=n.n;g.append(t);
-  gN.append(g);nodeEls[n.id]=g;
-  g.addEventListener("click",()=>select(n.id));
-  g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(n.id)}});
-});
+const certs=["c_aws","c_ibm","c_ml","c_pspo","c_mck"];
+let edgeEls=[],nodeEls={},mobile=null;
+/* desktop: career runs left to right; phone: career runs top to bottom, one role at a time */
+function layoutWide(){
+  const TY=400,rx=i=>150+i*190;
+  byId.me.x=52;byId.me.y=TY;roleOrder.forEach((id,i)=>{byId[id].x=rx(i);byId[id].y=TY});
+  const stack={};N.forEach(n=>{const r=col[n.id];if(!r)return;const key=r+n.t,k=stack[key]=(stack[key]||0)+1;
+    n.x=byId[r].x-80;n.y=n.t==="outcome"?TY-80-(k-1)*34:TY+80+(k-1)*34});
+  leadOrder.forEach((id,i)=>{byId[id].x=rx(i);byId[id].y=60});
+  skills.forEach((id,i)=>{byId[id].x=90+i*68;byId[id].y=[640,690,740][i%3]});
+  certs.forEach((id,i)=>{byId[id].x=150+i*225;byId[id].y=800});
+  return{W:1200,H:840,track:[52,TY,1100,TY],bands:[[1184,620,"SKILLS","end"],[1184,782,"CERTIFICATIONS","end"],[1184,30,"LEADERSHIP","end"]]};
+}
+function layoutNarrow(){
+  const X=28,OX=66,step=28;let y=34;
+  byId.me.x=X;byId.me.y=y;y+=58;
+  roleOrder.forEach(id=>{const r=byId[id];r.x=X;r.y=y;y+=40;
+    ["outcome","decision"].forEach(t=>N.filter(n=>col[n.id]===id&&n.t===t).forEach(n=>{n.x=OX;n.y=y;y+=step}));
+    y+=22});
+  const trackEnd=byId.tpm.y;const bands=[];
+  const grid=(ids,label)=>{y+=10;bands.push([X-8,y,label,"start"]);y+=26;
+    ids.forEach((id,i)=>{byId[id].x=i%2?214:X;byId[id].y=y;if(i%2||i===ids.length-1)y+=step+2});y+=8};
+  grid(leadOrder,"LEADERSHIP");grid(skills,"SKILLS");grid(certs,"CERTIFICATIONS");
+  return{W:400,H:y+12,track:[X,byId.me.y,X,trackEnd],bands};
+}
+function build(){
+  const m=window.innerWidth<700;if(m===mobile)return;mobile=m;
+  const Lyt=m?layoutNarrow():layoutWide();
+  svg.innerHTML="";svg.classList.toggle("mobile",m);svg.setAttribute("viewBox",`0 0 ${Lyt.W} ${Lyt.H}`);
+  const gT=mk("g",{}),gE=mk("g",{}),gN=mk("g",{});svg.append(gT,gE,gN);
+  const [x1,y1,x2,y2]=Lyt.track;gT.append(mk("line",{x1,y1,x2,y2,class:"track"}),mk("line",{x1,y1,x2,y2,class:"trackDash"}));
+  Lyt.bands.forEach(([x,y,txt,a])=>{const t=mk("text",{x,y,"text-anchor":a,style:"font:500 11px var(--mono);fill:var(--muted);letter-spacing:.06em"});t.textContent=txt;gT.append(t)});
+  edgeEls=E.map(([p,r,q])=>{const a=byId[p],b=byId[q];const l=mk("line",{x1:a.x,y1:a.y,x2:b.x,y2:b.y,class:"edge"});gE.append(l);return{s:p,t:q,l,tx:mk("text",{})}});
+  nodeEls={};
+  N.forEach(n=>{
+    const g=mk("g",{class:"node "+n.t,tabindex:"0",role:"button","aria-label":TYPES[n.t].label+": "+n.n});
+    const r=n.t==="person"?16:n.t==="role"?12:(n.t==="skill"||n.t==="cert")?7:9;
+    const c=mk("circle",{cx:n.x,cy:n.y,r});c.style.fill=`var(${TYPES[n.t].c})`;g.append(c);
+    let t;
+    if(m){
+      t=mk("text",{x:n.x+(n.t==="person"?24:n.t==="role"?20:14),y:n.y+(n.t==="role"&&n.yr?0:4.5)});
+      if(n.yr){const y=mk("text",{x:n.x+20,y:n.y+16,class:"yr"});y.textContent=n.yr;g.append(y)}
+    }else if(n.t==="role"||n.t==="person"){
+      t=mk("text",{x:n.x,y:n.y+(n.t==="person"?36:32),"text-anchor":"middle"});
+      if(n.yr){const y=mk("text",{x:n.x,y:n.y-20,"text-anchor":"middle",class:"yr"});y.textContent=n.yr;g.append(y)}
+    }else if(n.t==="outcome"||n.t==="decision"){t=mk("text",{x:n.x+13,y:n.y+4})}
+    else{t=mk("text",{x:n.x,y:n.y+21,"text-anchor":"middle"})}
+    t.textContent=n.n;g.append(t);gN.append(g);nodeEls[n.id]=g;
+    g.addEventListener("click",()=>select(n.id,true));
+    g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(n.id,true)}});
+  });
+  if(typeof paint==="function"&&sel)paint();
+}
+let sel=null;
+build();
 const active=new Set(Object.keys(TYPES));
 const chips=document.getElementById("chips");
 Object.entries(TYPES).filter(([k])=>k!=="person").forEach(([k,v])=>{
@@ -628,32 +658,32 @@ Object.entries(TYPES).filter(([k])=>k!=="person").forEach(([k,v])=>{
   b.onclick=()=>{active.has(k)?active.delete(k):active.add(k);b.setAttribute("aria-pressed",active.has(k));paint()};
   chips.append(b);
 });
-let sel="tpm";
 function near(id){const s=new Set([id]);E.forEach(([a,,b])=>{if(a===id)s.add(b);if(b===id)s.add(a)});return s}
 function paint(){
-  const nb=near(sel);
+  const nb=sel?near(sel):null;
   N.forEach(n=>{const el=nodeEls[n.id];el.style.display=active.has(n.t)?"":"none";el.classList.toggle("sel",n.id===sel);
-    el.classList.toggle("dim",!nb.has(n.id));el.classList.toggle("near",nb.has(n.id))});
+    el.classList.toggle("dim",!!nb&&!nb.has(n.id));el.classList.toggle("near",!!nb&&nb.has(n.id))});
   edgeEls.forEach(e=>{const vis=active.has(byId[e.s].t)&&active.has(byId[e.t].t);e.l.style.display=e.tx.style.display=vis?"":"none";
-    const hot=e.s===sel||e.t===sel;e.l.classList.toggle("hot",hot);e.tx.classList.toggle("hot",hot);e.l.classList.toggle("dim",!hot)});
+    const hot=!!sel&&(e.s===sel||e.t===sel);e.l.classList.toggle("hot",hot);e.tx.classList.toggle("hot",hot);e.l.classList.toggle("dim",!hot)});
   articles.forEach(a=>a.hidden=!active.has(a.dataset.t));
 }
-function select(id){sel=id;paint();renderPanel()}
+function select(id,tapped){sel=id;paint();renderPanel();const p=document.getElementById("panel");if(mobile){if(tapped)p.hidden=false}else p.hidden=false}
 function renderPanel(){
   const n=byId[sel],p=document.getElementById("panel");p.dataset.t=n.t;
   const rels=E.filter(([a,,b])=>a===sel||b===sel);
   const CS={ai:"cs-ai",chat:"cs-ai",supp:"cs-support",infl:"cs-influence",sk_infl:"cs-influence",o128:"cs-influence"};
-  p.innerHTML=`<div class="ptype">:${TYPES[n.t].label}${n.yr?" · "+n.yr:""}</div><h3>${n.n}</h3><p>${n.d}</p>${CS[sel]?`<p><a class="csLink" href="#${CS[sel]}">Read the story →</a></p>`:""}
+  p.innerHTML=`<button type="button" class="sheetClose" aria-label="Close">✕</button><div class="ptype">:${TYPES[n.t].label}${n.yr?" · "+n.yr:""}</div><h3>${n.n}</h3><p>${n.d}</p>${CS[sel]?`<p><a class="csLink" href="#${CS[sel]}">Read the story →</a></p>`:""}
   <ul class="rel">${rels.map(([a,r,b])=>{const o=a===sel?b:a;
     const txt=a===sel?`(this)-[:${r}]→(<span>${byId[b].n}</span>)`:`(<span>${byId[a].n}</span>)-[:${r}]→(this)`;
     return `<li><button data-id="${o}">${txt}</button></li>`}).join("")}</ul><div class="hint">Tap a relationship to follow it.</div>`;
-  p.querySelectorAll("button[data-id]").forEach(b=>b.onclick=()=>select(b.dataset.id));
+  p.querySelectorAll("button[data-id]").forEach(b=>b.onclick=()=>select(b.dataset.id,true));
+  p.querySelector(".sheetClose").onclick=()=>{p.hidden=true};
 }
 const vG=document.getElementById("vGraph"),vL=document.getElementById("vList");
 function view(g){vG.setAttribute("aria-pressed",g);vL.setAttribute("aria-pressed",!g);document.getElementById("board").hidden=!g;document.getElementById("list").hidden=g}
 vG.onclick=()=>view(true);vL.onclick=()=>view(false);
-if(window.innerWidth<700)view(false);
-select("tpm");
+if(mobile){document.getElementById("panel").hidden=true;paint()}else select("tpm");
+window.addEventListener("resize",()=>{const was=mobile;build();if(was!==mobile){if(!mobile&&!sel)select("tpm");document.getElementById("panel").hidden=mobile}});
 
 /* ================= INTRO ================= */
 const $=id=>document.getElementById(id);
@@ -702,7 +732,7 @@ const SCENES=[
  {ms:6400,cap:`Getting data to work takes a lot of parts!<span class="sub">Some say building an F1 car is easier. (I am not qualified to build one.)</span>`,go:()=>{look(470,300,1.04)}},
  {ms:4600,cap:`<span class="lap">CHASSIS · ENGINEER, 2020</span>I started as an engineer, so I know data from the ground up.`,go:()=>{look(430,400,1.2);stage.classList.add("build");later(()=>{drop("pChassis");on("sparks")},400)}},
  {ms:6600,cap:`<span class="lap">ENGINE · DATA SCIENTIST, 2022</span>Then I sat with the people using it, to learn what they need.<span class="sub">Their needs change as we grow, the way a car changes for every track.</span>`,go:()=>{look(440,380,1.16);drop("pBody");later(()=>drop("pEngine"),700)}},
- {ms:5600,cap:`<span class="lap">STEERING · PRODUCT, 2024</span>I set the direction, and anticipate the turns.<span class="sub">I made the platform AI-ready before anyone asked.</span>`,go:()=>{look(500,370,1.22);drop("pSteer");
+ {ms:5600,cap:`<span class="lap">STEERING · PRODUCT, 2024</span>I set the direction, and anticipate the turns.<span class="sub">I pushed for an AI-ready platform before anyone asked.</span>`,go:()=>{look(500,370,1.22);drop("pSteer");
    later(()=>{look(500,300,1);stage.classList.remove("build");off("sparks");on("pitwall");stage.classList.add("walk");avatarMove.style.transform="translateX(805px)"},1600);
    later(()=>{stage.classList.remove("walk");stage.classList.add("atwall");on("headset")},3150)}},
  {ms:6000,cap:`<span class="lap">CREW</span>No one wins alone! I grow the people around me, on my team and beyond it.<span class="sub">Engineers · product owners · upstream teams · volunteer teams of 30+</span>`,go:()=>{[0,1,2,3].forEach(i=>on("crew"+i));later(()=>stage.classList.add("point"),700)}},
